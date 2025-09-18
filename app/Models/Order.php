@@ -67,6 +67,38 @@ class Order extends Model
     }
 
     /**
+     * Get the primary payment for the order.
+     */
+    public function primaryPayment(): BelongsTo
+    {
+        return $this->belongsTo(Payment::class, 'id', 'order_id')->where('status', 'completed');
+    }
+
+    /**
+     * Scope for completed orders.
+     */
+    public function scopeCompleted($query)
+    {
+        return $query->where('status', 'delivered');
+    }
+
+    /**
+     * Scope for pending orders.
+     */
+    public function scopePending($query)
+    {
+        return $query->where('status', 'pending');
+    }
+
+    /**
+     * Get the total items count.
+     */
+    public function getTotalItemsAttribute(): int
+    {
+        return $this->items->sum('quantity');
+    }
+
+    /**
      * Generate a unique order number.
      */
     public static function generateOrderNumber(): string

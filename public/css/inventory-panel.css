@@ -1,0 +1,302 @@
+/* Inventory Panel Custom Styles */
+
+/* Sidebar Styling */
+.sidebar {
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.sidebar a {
+    transition: all 0.2s ease;
+}
+
+.sidebar a:hover {
+    transform: translateX(5px);
+}
+
+/* Category Filter Buttons */
+.bg-yellow-200, .bg-yellow-400 {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.bg-yellow-200:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.bg-yellow-400 {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Search Input Styling */
+input[placeholder="Quick search"] {
+    transition: all 0.3s ease;
+    min-width: 250px;
+}
+
+input[placeholder="Quick search"]:focus {
+    transform: scale(1.02);
+}
+
+/* New Stock Button */
+.bg-blue-600 {
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.bg-blue-600:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+}
+
+/* Status Filter */
+select {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+select:focus {
+    transform: scale(1.02);
+}
+
+/* Table Styling */
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+th {
+    background-color: #f8fafc;
+    font-weight: 600;
+    color: #374151;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+td {
+    vertical-align: middle;
+}
+
+tr:hover {
+    background-color: #f9fafb;
+    transition: background-color 0.2s ease;
+}
+
+/* Checkbox Styling */
+input[type="checkbox"] {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+input[type="checkbox"]:checked {
+    transform: scale(1.1);
+}
+
+/* Status Badges */
+.bg-green-100 {
+    transition: all 0.3s ease;
+}
+
+.bg-red-100 {
+    transition: all 0.3s ease;
+}
+
+.bg-green-100:hover, .bg-red-100:hover {
+    transform: scale(1.05);
+}
+
+/* Inventory Section Container */
+.border-blue-200 {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.border-blue-200:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Blue Header Section */
+.bg-blue-100 {
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 200px;
+    }
+    
+    .flex.space-x-4 {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    
+    input[placeholder="Quick search"] {
+        min-width: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        position: fixed;
+        z-index: 50;
+        transform: translateX(-100%);
+    }
+    
+    .sidebar.open {
+        transform: translateX(0);
+    }
+    
+    .flex.space-x-4 {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .bg-blue-100 .flex {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+    }
+    
+    input[placeholder="Quick search"] {
+        min-width: 100%;
+    }
+}
+
+/* Loading States */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #e5e7eb;
+    border-top: 2px solid #3b82f6;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Focus States */
+.focus\:ring-2:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Smooth Transitions */
+* {
+    transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Custom Scrollbar */
+.overflow-auto::-webkit-scrollbar {
+    width: 8px;
+}
+
+.overflow-auto::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 4px;
+}
+
+.overflow-auto::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+.overflow-auto::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Empty State Styling */
+.empty-state {
+    text-align: center;
+    padding: 3rem;
+    color: #6b7280;
+}
+
+.empty-state i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+/* Action Buttons */
+.action-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.action-btn:hover {
+    transform: translateY(-1px);
+}
+
+.action-btn.edit {
+    background-color: #fbbf24;
+    color: #92400e;
+}
+
+.action-btn.edit:hover {
+    background-color: #f59e0b;
+}
+
+.action-btn.delete {
+    background-color: #f87171;
+    color: #991b1b;
+}
+
+.action-btn.delete:hover {
+    background-color: #ef4444;
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Table Row Selection */
+.selected {
+    background-color: #eff6ff !important;
+    border-left: 4px solid #3b82f6;
+}
+
+/* Category Button Active State */
+.category-active {
+    background-color: #fbbf24 !important;
+    border-color: #f59e0b !important;
+    box-shadow: 0 4px 12px rgba(251, 191, 36, 0.4) !important;
+    transform: translateY(-2px);
+}
+
+/* Search Highlight */
+.search-highlight {
+    background-color: #fef3c7;
+    padding: 0.125rem 0.25rem;
+    border-radius: 0.25rem;
+}

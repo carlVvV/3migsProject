@@ -30,6 +30,9 @@ class ProductSeeder extends Seeder
                 'status' => 'available',
                 'is_featured' => true,
                 'is_customizable' => true,
+                'is_new_arrival' => false,
+                'is_new_design' => false,
+                'product_type' => 'gown',
                 'customization_options' => json_encode([
                     'fabrics' => ['Silk', 'Satin', 'Lace', 'Tulle'],
                     'colors' => ['White', 'Ivory', 'Champagne'],
@@ -57,6 +60,9 @@ class ProductSeeder extends Seeder
                 'status' => 'available',
                 'is_featured' => true,
                 'is_customizable' => true,
+                'is_new_arrival' => true,
+                'is_new_design' => true,
+                'product_type' => 'gown',
                 'customization_options' => json_encode([
                     'fabrics' => ['Silk', 'Satin', 'Lace', 'Tulle'],
                     'colors' => ['White', 'Ivory', 'Champagne'],
@@ -87,6 +93,9 @@ class ProductSeeder extends Seeder
                 'status' => 'available',
                 'is_featured' => true,
                 'is_customizable' => true,
+                'is_new_arrival' => false,
+                'is_new_design' => false,
+                'product_type' => 'barong',
                 'customization_options' => json_encode([
                     'fabrics' => ['Piña', 'Jusi', 'Silk', 'Cotton'],
                     'colors' => ['White', 'Cream', 'Ivory'],

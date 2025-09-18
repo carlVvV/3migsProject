@@ -47,7 +47,12 @@ class CustomLoginController extends Controller
         if (Auth::attempt($request->only('email', 'password'), $request->boolean('remember'))) {
             $request->session()->regenerate();
 
-            return redirect()->intended('/dashboard');
+            $user = Auth::user();
+            if ($user && method_exists($user, 'hasRole') && $user->hasRole('admin')) {
+                return redirect()->intended(route('admin.dashboard'));
+            }
+
+            return redirect()->intended(route('dashboard'));
         }
 
         throw ValidationException::withMessages([
@@ -63,11 +68,45 @@ class CustomLoginController extends Controller
      */
     public function logout(Request $request)
     {
-        Auth::logout();
+        try {
+            // Log the user out
+            Auth::logout();
 
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
+            // Invalidate the session
+            $request->session()->invalidate();
+            
+            // Regenerate the CSRF token
+            $request->session()->regenerateToken();
 
-        return redirect('/');
+            // Clear any cached data
+            if (function_exists('cache')) {
+                cache()->flush();
+            }
+
+            // Clear any remember me tokens
+            if ($request->hasCookie('remember_web')) {
+                $cookie = cookie()->forget('remember_web');
+                return redirect()->route('login')
+                    ->with('status', 'You have been successfully logged out.')
+                    ->withCookie($cookie);
+            }
+
+            // Clear any other authentication cookies
+            $request->session()->forget('auth');
+            $request->session()->forget('user_id');
+
+            // Force redirect to login page with success message
+            return redirect()->route('login')
+                ->with('status', 'You have been successfully logged out.')
+                ->withHeaders([
+                    'Cache-Control' => 'no-cache, no-store, must-revalidate',
+                    'Pragma' => 'no-cache',
+                    'Expires' => '0'
+                ]);
+            
+        } catch (\Exception $e) {
+            // If there's an error, still try to redirect to login
+            return redirect()->route('login')->with('error', 'An error occurred during logout.');
+        }
     }
 }

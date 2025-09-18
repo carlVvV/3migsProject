@@ -1,0 +1,5 @@
+/* Inventory panel overrides (kept intentionally small) */
+
+.table-fixed { table-layout: fixed; }
+
+/* Placeholder to prevent 404 while allowing future custom styles */

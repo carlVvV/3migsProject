@@ -1,0 +1,338 @@
+/* Orders Panel Custom Styles */
+
+/* Sidebar Styling */
+.sidebar {
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar nav a {
+    transition: all 0.3s ease;
+    border-radius: 8px;
+}
+
+.sidebar nav a:hover {
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.sidebar nav a.active {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+/* Card Hover Effects */
+.bg-white.rounded-xl {
+    transition: all 0.3s ease;
+    border: 1px solid #e5e7eb;
+}
+
+.bg-white.rounded-xl:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border-color: #3b82f6;
+}
+
+/* Stats Cards */
+.bg-white.rounded-xl .p-3 {
+    transition: all 0.3s ease;
+}
+
+.bg-white.rounded-xl:hover .p-3 {
+    transform: scale(1.1);
+}
+
+/* Table Styling */
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+thead th {
+    background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+    border-bottom: 2px solid #e5e7eb;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+
+tbody tr {
+    transition: all 0.2s ease;
+}
+
+tbody tr:hover {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    transform: scale(1.01);
+}
+
+/* Status Badges */
+.inline-flex.items-center.px-2\.5.py-0\.5.rounded-full {
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.inline-flex.items-center.px-2\.5.py-0\.5.rounded-full:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Filter Controls */
+select, input[type="date"] {
+    transition: all 0.3s ease;
+    border: 1px solid #d1d5db;
+}
+
+select:focus, input[type="date"]:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    transform: translateY(-1px);
+}
+
+/* Search Input */
+#search-orders {
+    transition: all 0.3s ease;
+    border: 1px solid #d1d5db;
+}
+
+#search-orders:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    transform: translateY(-1px);
+}
+
+/* Buttons */
+button {
+    transition: all 0.3s ease;
+}
+
+button:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Refresh Button */
+#refresh-orders {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    transition: all 0.3s ease;
+}
+
+#refresh-orders:hover {
+    background: linear-gradient(135deg, #1d4ed8 0%, #1e3a8a 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+}
+
+#refresh-orders:active {
+    transform: translateY(0);
+}
+
+/* Pagination */
+#page-numbers button {
+    transition: all 0.3s ease;
+    min-width: 40px;
+}
+
+#page-numbers button:hover:not(.bg-blue-600) {
+    background: #f3f4f6;
+    transform: translateY(-1px);
+}
+
+#page-numbers button.bg-blue-600 {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+}
+
+/* Loading Animation */
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.loading {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .flex.items-center.space-x-4 {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-4 {
+        grid-template-columns: 1fr;
+    }
+    
+    .sidebar {
+        width: 100%;
+        position: relative;
+    }
+    
+    .flex.h-screen {
+        flex-direction: column;
+    }
+    
+    .overflow-x-auto {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    table {
+        min-width: 600px;
+    }
+}
+
+@media (max-width: 640px) {
+    .px-6 {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .p-6 {
+        padding: 1rem;
+    }
+    
+    .text-2xl {
+        font-size: 1.5rem;
+    }
+    
+    .text-3xl {
+        font-size: 1.875rem;
+    }
+}
+
+/* Custom Scrollbar */
+.overflow-x-auto::-webkit-scrollbar {
+    height: 8px;
+}
+
+.overflow-x-auto::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 4px;
+}
+
+.overflow-x-auto::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+.overflow-x-auto::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Focus States */
+button:focus, select:focus, input:focus {
+    outline: none;
+    ring: 2px;
+    ring-color: #3b82f6;
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.bg-white.rounded-xl {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Table Row Animation */
+tbody tr {
+    animation: fadeIn 0.3s ease-out;
+}
+
+tbody tr:nth-child(1) { animation-delay: 0.1s; }
+tbody tr:nth-child(2) { animation-delay: 0.2s; }
+tbody tr:nth-child(3) { animation-delay: 0.3s; }
+tbody tr:nth-child(4) { animation-delay: 0.4s; }
+tbody tr:nth-child(5) { animation-delay: 0.5s; }
+
+/* Empty State Styling */
+#orders-table-body td[colspan="7"] {
+    padding: 3rem 1rem;
+}
+
+#orders-table-body td[colspan="7"] i {
+    display: block;
+    margin: 0 auto 1rem;
+    color: #9ca3af;
+}
+
+#orders-table-body td[colspan="7"] p:first-of-type {
+    font-size: 1.125rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+#orders-table-body td[colspan="7"] p:last-of-type {
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+/* Action Buttons */
+.text-blue-600, .text-green-600, .text-red-600 {
+    transition: all 0.3s ease;
+    padding: 0.5rem;
+    border-radius: 0.375rem;
+}
+
+.text-blue-600:hover, .text-green-600:hover, .text-red-600:hover {
+    background: rgba(59, 130, 246, 0.1);
+    transform: scale(1.1);
+}
+
+.text-green-600:hover {
+    background: rgba(34, 197, 94, 0.1);
+}
+
+.text-red-600:hover {
+    background: rgba(239, 68, 68, 0.1);
+}
+
+/* Disabled State Styling */
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* Date Input Styling */
+input[type="date"] {
+    appearance: none;
+    background: white;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+}
+
+/* Select Dropdown Styling */
+select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem;
+}

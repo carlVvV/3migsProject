@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard - Three Migs</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Admin Dashboard - 3Migs Admin</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -14,8 +15,8 @@
         <!-- Sidebar -->
         <div class="sidebar w-64 text-white p-6">
             <div class="mb-8">
-                <h1 class="text-2xl font-bold">Three Migs</h1>
-                <p class="text-gray-300 text-sm">Admin Dashboard</p>
+                <h1 class="text-2xl font-bold text-black">3Migs Gowns & Barong</h1>
+                <p class="text-gray-600 text-sm">Admin Dashboard</p>
             </div>
             
             <nav class="space-y-4">
@@ -23,26 +24,34 @@
                     <i class="fas fa-tachometer-alt"></i>
                     <span>Dashboard</span>
                 </a>
-                <a href="#" class="flex items-center space-x-3 p-3 rounded-lg text-gray-300 hover:bg-gray-700">
-                    <i class="fas fa-box"></i>
-                    <span>Products</span>
+                <a href="{{ route('admin.sales') }}" class="flex items-center space-x-3 p-3 rounded-lg text-gray-600 hover:bg-gray-100 hover:shadow-md hover:scale-105 transition-all duration-200">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Sales Panel</span>
                 </a>
-                <a href="#" class="flex items-center space-x-3 p-3 rounded-lg text-gray-300 hover:bg-gray-700">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span>Orders</span>
+                <a href="{{ route('admin.inventory') }}" class="flex items-center space-x-3 p-3 rounded-lg text-gray-600 hover:bg-gray-100 hover:shadow-md hover:scale-105 transition-all duration-200">
+                    <i class="fas fa-boxes"></i>
+                    <span>Inventory</span>
                 </a>
-                <a href="#" class="flex items-center space-x-3 p-3 rounded-lg text-gray-300 hover:bg-gray-700">
-                    <i class="fas fa-users"></i>
-                    <span>Customers</span>
+                <a href="{{ route('admin.coupons') }}" class="flex items-center space-x-3 p-3 rounded-lg text-gray-600 hover:bg-gray-100 hover:shadow-md hover:scale-105 transition-all duration-200">
+                    <i class="fas fa-ticket-alt"></i>
+                    <span>Coupons</span>
                 </a>
-                <a href="#" class="flex items-center space-x-3 p-3 rounded-lg text-gray-300 hover:bg-gray-700">
+                
+                <a href="{{ route('admin.reporting') }}" class="flex items-center space-x-3 p-3 rounded-lg text-gray-600 hover:bg-gray-100 hover:shadow-md hover:scale-105 transition-all duration-200">
                     <i class="fas fa-chart-bar"></i>
-                    <span>Analytics</span>
+                    <span>Reporting</span>
                 </a>
-                <a href="#" class="flex items-center space-x-3 p-3 rounded-lg text-gray-300 hover:bg-gray-700">
-                    <i class="fas fa-cog"></i>
-                    <span>Settings</span>
-                </a>
+                
+                <!-- Logout Button -->
+                <div class="pt-4 mt-4 border-t border-gray-200">
+                    <form id="logout-form-dashboard" action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="w-full flex items-center space-x-3 p-3 rounded-lg text-red-600 hover:bg-red-50 hover:text-red-700 transition-colors">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Logout</span>
+                        </button>
+                    </form>
+                </div>
             </nav>
         </div>
 
@@ -53,18 +62,10 @@
                 <div class="flex justify-between items-center">
                     <h2 class="text-2xl font-bold text-gray-800">Dashboard Overview</h2>
                     <div class="flex items-center space-x-4">
-                        <button id="refresh-dashboard" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 flex items-center space-x-2">
-                            <i class="fas fa-sync-alt"></i>
-                            <span>Refresh</span>
-                        </button>
-                        <div class="relative">
-                            <input type="text" placeholder="Search..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                            <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                        <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
+                            <i class="fas fa-user text-blue-600 text-xl"></i>
                         </div>
-                        <div class="flex items-center space-x-2">
-                            <img src="https://via.placeholder.com/40x40" alt="Profile" class="w-10 h-10 rounded-full">
-                            <span class="text-gray-700">Admin User</span>
-                        </div>
+                        <span class="text-gray-700">Admin User</span>
                     </div>
                 </div>
             </header>
@@ -98,8 +99,8 @@
                             <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
                                 <i class="fas fa-clock text-yellow-600 text-xl"></i>
                             </div>
-                        </div>
-                    </div>
+                </div>
+            </div>
 
                     <!-- Cancelled Orders -->
                     <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
@@ -112,8 +113,8 @@
                             <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
                                 <i class="fas fa-times-circle text-red-600 text-xl"></i>
                             </div>
-                        </div>
-                    </div>
+                                </div>
+                            </div>
 
                     <!-- Total Users -->
                     <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
@@ -148,8 +149,8 @@
                                     <option value="amount">Sort by Amount</option>
                                     <option value="status">Sort by Status</option>
                                 </select>
+                                </div>
                             </div>
-                        </div>
                         
                         <div class="overflow-x-auto">
                             <table class="w-full">
@@ -166,8 +167,8 @@
                                     <!-- Order data will be populated here -->
                                 </tbody>
                             </table>
+                            </div>
                         </div>
-                    </div>
 
                     <!-- Website Stats -->
                     <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
@@ -181,9 +182,9 @@
                                 </div>
                                 <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
                                     <i class="fas fa-eye text-blue-600"></i>
-                                </div>
-                            </div>
-                            
+                    </div>
+                </div>
+
                             <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                                 <div>
                                     <p class="text-sm font-medium text-gray-600">Product Views</p>
@@ -198,12 +199,12 @@
                                 <div>
                                     <p class="text-sm font-medium text-gray-600">New Orders</p>
                                     <p class="text-lg font-bold text-gray-900" id="new-orders">0</p>
-                                </div>
+                            </div>
                                 <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
                                     <i class="fas fa-plus text-purple-600"></i>
-                                </div>
-                            </div>
-                            
+                    </div>
+                </div>
+
                             <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                                 <div>
                                     <p class="text-sm font-medium text-gray-600">Cancelled</p>
@@ -211,11 +212,11 @@
                                 </div>
                                 <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
                                     <i class="fas fa-times text-red-600"></i>
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
                 <!-- Best Sellers and Customer Retention -->
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -225,8 +226,8 @@
                         
                         <div class="space-y-4" id="best-sellers-container">
                             <!-- Best seller items will be populated here -->
-                        </div>
                     </div>
+                </div>
 
                     <!-- Customer Retention -->
                     <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
@@ -234,11 +235,11 @@
                         
                         <div class="chart-container">
                             <canvas id="retention-chart"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
     </div>
 
     <script>
@@ -285,10 +286,7 @@
                     this.sortOrders(e.target.value);
                 });
 
-                // Refresh dashboard button
-                document.getElementById('refresh-dashboard').addEventListener('click', () => {
-                    this.refreshDashboard();
-                });
+                // Refresh button removed
             }
 
             async loadDashboardData() {
@@ -443,8 +441,8 @@
                             <p class="text-sm font-medium text-gray-900">${item.sales}</p>
                             <div class="w-20 bg-gray-200 rounded-full h-2">
                                 <div class="progress-bar h-2 rounded-full" style="width: ${item.percentage}%"></div>
-                            </div>
-                        </div>
+        </div>
+    </div>
                     `;
                     container.appendChild(itemDiv);
                 });

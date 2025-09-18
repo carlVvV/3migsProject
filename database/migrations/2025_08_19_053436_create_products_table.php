@@ -23,6 +23,9 @@ return new class extends Migration
             $table->enum('status', ['available', 'rented', 'out_of_stock'])->default('available');
             $table->boolean('is_featured')->default(false);
             $table->boolean('is_customizable')->default(false);
+            $table->boolean('is_new_arrival')->default(false);
+            $table->boolean('is_new_design')->default(false);
+            $table->enum('product_type', ['gown', 'barong', 'accessory', 'other'])->default('gown');
             $table->json('customization_options')->nullable(); // fabric, color, size, embroidery
             $table->json('measurements')->nullable(); // custom measurement fields
             $table->string('main_image');
@@ -33,6 +36,7 @@ return new class extends Migration
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->index(['status', 'category_id', 'is_featured']);
             $table->index(['slug']);
+            $table->index(['is_new_arrival', 'is_new_design']);
         });
     }
 

@@ -1,0 +1,287 @@
+/* Reporting Panel Custom Styles */
+.sidebar {
+    transition: all 0.3s ease;
+}
+
+/* Status badges */
+.status-pending {
+    @apply bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs font-medium;
+}
+
+.status-confirmed {
+    @apply bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-medium;
+}
+
+.status-processing {
+    @apply bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-xs font-medium;
+}
+
+.status-shipped {
+    @apply bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-xs font-medium;
+}
+
+.status-delivered {
+    @apply bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-medium;
+}
+
+.status-cancelled {
+    @apply bg-red-100 text-red-800 px-2 py-1 rounded-full text-xs font-medium;
+}
+
+.status-refunded {
+    @apply bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs font-medium;
+}
+
+/* Payment method badges */
+.payment-gcash {
+    @apply bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-medium;
+}
+
+.payment-credit_card {
+    @apply bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-medium;
+}
+
+.payment-debit_card {
+    @apply bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-xs font-medium;
+}
+
+.payment-cod {
+    @apply bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs font-medium;
+}
+
+.payment-pickup {
+    @apply bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-xs font-medium;
+}
+
+/* Table styles */
+.transaction-row {
+    transition: all 0.2s ease;
+}
+
+.transaction-row:hover {
+    @apply bg-gray-50;
+}
+
+/* Modal animations */
+.modal-enter {
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+.modal-enter-active {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 200ms, transform 200ms;
+}
+
+.modal-exit {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.modal-exit-active {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 200ms, transform 200ms;
+}
+
+/* Loading states */
+.loading-skeleton {
+    @apply animate-pulse bg-gray-200 rounded;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .sidebar {
+        @apply w-full h-auto;
+    }
+    
+    .filters-grid {
+        @apply grid-cols-1;
+    }
+    
+    .summary-cards {
+        @apply grid-cols-1;
+    }
+}
+
+@media (max-width: 1024px) {
+    .filters-grid {
+        @apply grid-cols-2;
+    }
+    
+    .summary-cards {
+        @apply grid-cols-2;
+    }
+}
+
+/* Custom scrollbar */
+.overflow-y-auto::-webkit-scrollbar {
+    width: 6px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-track {
+    @apply bg-gray-100;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 rounded-full;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-400;
+}
+
+/* Export button animations */
+.export-button {
+    transition: all 0.2s ease;
+}
+
+.export-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Filter button states */
+.filter-button {
+    transition: all 0.2s ease;
+}
+
+.filter-button:active {
+    transform: scale(0.95);
+}
+
+/* Table header sticky */
+.table-header-sticky {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: white;
+}
+
+/* Order details modal */
+.order-details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Payment details highlight */
+.payment-highlight {
+    @apply bg-blue-50 border-l-4 border-blue-400 p-4 rounded-r-lg;
+}
+
+.gcash-payment-id {
+    @apply font-mono bg-green-100 text-green-800 px-2 py-1 rounded text-sm;
+}
+
+/* Responsive table */
+@media (max-width: 640px) {
+    .transaction-table {
+        @apply text-sm;
+    }
+    
+    .transaction-table th,
+    .transaction-table td {
+        @apply px-2 py-2;
+    }
+}
+
+/* Animation for summary cards */
+.summary-card {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Stagger animation for cards */
+.summary-card:nth-child(1) { animation-delay: 0.1s; }
+.summary-card:nth-child(2) { animation-delay: 0.2s; }
+.summary-card:nth-child(3) { animation-delay: 0.3s; }
+.summary-card:nth-child(4) { animation-delay: 0.4s; }
+
+/* Filter section animations */
+.filters-section {
+    animation: slideDown 0.4s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Table row animations */
+.transaction-row {
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Pagination styles */
+.pagination-container {
+    @apply flex items-center justify-between;
+}
+
+.pagination-button {
+    @apply px-3 py-1 text-sm border border-gray-300 rounded-md transition-colors;
+}
+
+.pagination-button:not(:disabled) {
+    @apply bg-white text-gray-700 hover:bg-gray-50;
+}
+
+.pagination-button:disabled {
+    @apply bg-gray-100 text-gray-400 cursor-not-allowed;
+}
+
+.pagination-info {
+    @apply text-sm text-gray-700;
+}
+
+/* Search input focus effects */
+.search-input:focus {
+    @apply ring-2 ring-blue-500 border-transparent;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Date input styles */
+.date-input {
+    @apply transition-all duration-200;
+}
+
+.date-input:focus {
+    @apply ring-2 ring-blue-500 border-transparent;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Select dropdown styles */
+.select-dropdown {
+    @apply transition-all duration-200;
+}
+
+.select-dropdown:focus {
+    @apply ring-2 ring-blue-500 border-transparent;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}

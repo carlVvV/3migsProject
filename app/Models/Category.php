@@ -19,7 +19,8 @@ class Category extends Model
     ];
 
     protected $casts = [
-        'is_active' => 'boolean',
+        'status' => 'string',
+        'sort_order' => 'integer',
     ];
 
     /**
@@ -52,5 +53,37 @@ class Category extends Model
     public function hasChildren(): bool
     {
         return $this->children()->exists();
+    }
+
+    /**
+     * Get the products count for the category.
+     */
+    public function getProductsCountAttribute(): int
+    {
+        return $this->products()->count();
+    }
+
+    /**
+     * Get the active products count for the category.
+     */
+    public function getActiveProductsCountAttribute(): int
+    {
+        return $this->products()->where('status', 'available')->count();
+    }
+
+    /**
+     * Scope for active categories.
+     */
+    public function scopeActive($query)
+    {
+        return $query->where('status', 'active');
+    }
+
+    /**
+     * Scope for categories with products.
+     */
+    public function scopeWithProducts($query)
+    {
+        return $query->whereHas('products');
     }
 }
