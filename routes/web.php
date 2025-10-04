@@ -13,6 +13,32 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+// Frontend routes - serve static HTML files directly
+Route::get('/{path}', function ($path) {
+    // Skip admin routes
+    if (str_starts_with($path, 'admin')) {
+        return null;
+    }
+    
+    // Skip API routes
+    if (str_starts_with($path, 'api')) {
+        return null;
+    }
+    
+    // Skip Laravel default routes
+    $skipRoutes = ['login', 'register', 'dashboard', 'profile', 'password', 'email'];
+    if (in_array($path, $skipRoutes)) {
+        return null;
+    }
+    
+    $filePath = public_path("{$path}/index.html");
+    if (file_exists($filePath)) {
+        return response()->file($filePath);
+    }
+    
+    abort(404);
+})->where('path', '.*');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -25,8 +51,8 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-// Temporarily removed role middleware for testing
-Route::middleware(['auth'])
+// Admin routes with proper role-based access control
+Route::middleware(['auth', 'role:admin'])
     ->prefix('admin')
     ->name('admin.')
     ->group(function () {

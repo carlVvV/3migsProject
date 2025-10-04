@@ -1,0 +1,49 @@
+/* Custom CSS for Custom Design page */
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+}
+
+/* Adjustments for custom elements not fully covered by Tailwind */
+
+/* Header - Dropdowns */
+.relative.group .absolute {
+    z-index: 1000;
+}
+
+/* Flash Sales Timer Spacing */
+.flash-sales-section .flex.items-center.space-x-2.text-gray-700 > span {
+    margin-right: 2px;
+    margin-left: 2px;
+}
+
+/* Product Card Rating Stars */
+.product-card .fa-star, .product-card .fa-star-half-alt {
+    color: #FFD700; /* Gold color for stars */
+}
+
+/* New Arrival Section - Image Opacity and Text Positioning */
+.new-arrival-section .bg-black img {
+    opacity: 0.3;
+}
+
+.new-arrival-section .bg-black h3,
+.new-arrival-section .bg-black p,
+.new-arrival-section .bg-black button {
+    position: relative;
+    z-index: 10;
+}
+
+/* Footer Top Section Icon Circle Size and Icon Size */
+.footer-top-section .w-16.h-16 {
+    width: 60px; /* Adjusted width */
+    height: 60px; /* Adjusted height */
+}
+
+.footer-top-section .w-16.h-16 .fas {
+    font-size: 1.5rem; /* Adjusted icon size */
+}

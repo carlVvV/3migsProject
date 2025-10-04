@@ -1,0 +1,10 @@
+/* Product Card: Add To Cart button is invisible by default, visible on hover */
+.product-card .add-to-cart-btn {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+.product-card:hover .add-to-cart-btn {
+    opacity: 1;
+    pointer-events: auto;
+}

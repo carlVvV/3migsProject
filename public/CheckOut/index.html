@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Profile dropdown
+                const profileBtn = document.getElementById('profile-btn');
+                const profileMenu = document.getElementById('profileMenu');
+                if (profileBtn && profileMenu) {
+                    profileBtn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        profileMenu.classList.toggle('hidden');
+                    });
+                    document.addEventListener('click', function() {
+                        profileMenu.classList.add('hidden');
+                    });
+                }
+
+                // Language dropdown
+                const langBtn = document.getElementById('lang-dropdown-btn');
+                const langMenu = document.getElementById('lang-dropdown-menu');
+                const langOptions = langMenu ? langMenu.querySelectorAll('button[data-lang]') : [];
+                const selectedLang = document.getElementById('selected-lang');
+                if (langBtn && langMenu && selectedLang) {
+                    langBtn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        langMenu.classList.toggle('hidden');
+                    });
+                    langOptions.forEach(function(btn) {
+                        btn.addEventListener('click', function() {
+                            selectedLang.innerText = btn.innerText;
+                            langMenu.classList.add('hidden');
+                        });
+                    });
+                    document.addEventListener('click', function(e) {
+                        if (!langMenu.contains(e.target) && e.target !== langBtn) {
+                            langMenu.classList.add('hidden');
+                        }
+                    });
+                }
+            });
+        </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CheckOut</title>
+    <link rel="stylesheet" href="checkout.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <header class="bg-black text-white py-2 shadow-md">
+        <div class="container mx-auto flex items-center justify-center relative px-4">
+            <span class="absolute left-0"></span>
+            <span class="text-xs mx-auto">Summer Sale For All Gown & Barong And Free Express Delivery <a href="#" class="underline">ShopNow</a></span>
+            <div class="absolute right-0">
+                <div class="relative inline-block">
+                    <button id="lang-dropdown-btn" class="bg-black text-white text-xs border-none px-2 py-1 rounded focus:outline-none flex items-center">
+                        <span id="selected-lang">English</span>
+                        <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div id="lang-dropdown-menu" class="hidden absolute right-0 mt-1 w-28 bg-white text-black rounded shadow-lg z-50">
+                        <button class="block w-full text-left px-4 py-2 hover:bg-gray-200" data-lang="en">English</button>
+                        <button class="block w-full text-left px-4 py-2 hover:bg-gray-200" data-lang="fil">Filipino</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="bg-white shadow-md py-4 sticky top-0 z-40">
+        <div class="container mx-auto flex justify-between items-center px-4">
+            <div class="flex items-center space-x-8">
+                <span class="text-2xl font-bold">Exclusive</span>
+                <div class="flex space-x-6 ml-8">
+                    <a href="../Homepagewithaccount/index.html" class="text-gray-600 font-medium hover:text-gray-900">Home</a>
+                    <a href="#main-footer" class="text-gray-600 hover:text-gray-900 font-medium scroll-to-footer">Contact</a>
+                    <a href="#main-footer" class="text-gray-600 hover:text-gray-900 font-medium scroll-to-footer">About</a>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <input type="text" placeholder="What are you looking for?" class="border rounded-full py-1 px-4 pl-10 text-sm focus:outline-none">
+                    <svg class="w-4 h-4 text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </div>
+                <a href="../Wishlist/index.html" class="relative inline-block">
+                                                    <i class="far fa-heart"></i>
+                                                    <span class="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold border-2 border-white">4</span>
+                                                </a>
+                                                <a href="../Cart/index.html" class="relative inline-block">
+                                                    <i class="fas fa-shopping-cart"></i>
+                                                    <span class="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold border-2 border-white">2</span>
+                                                </a>
+                                <div class="relative">
+                                    <button id="profile-btn" class="focus:outline-none"><i class="far fa-user"></i></button>
+                                    <!-- Profile Dropdown -->
+                                    <div id="profileMenu" class="hidden absolute right-0 mt-2 w-56 bg-white text-black rounded shadow-lg z-50 border border-gray-200">
+                                        <a href="../Account/index.html" class="flex items-center px-4 py-2 hover:bg-gray-100"><i class="far fa-user mr-3"></i><span>Manage My Account</span></a>
+                                        <a href="../Cart/index.html" class="flex items-center px-4 py-2 hover:bg-gray-100"><i class="fas fa-receipt mr-3"></i><span>My Order</span></a>
+                                        <a href="#" class="flex items-center px-4 py-2 hover:bg-gray-100"><i class="fas fa-undo mr-3"></i><span>My Cancellations</span></a>
+                                        <a href="#" class="flex items-center px-4 py-2 hover:bg-gray-100"><i class="far fa-star mr-3"></i><span>My Reviews</span></a>
+                                        <div class="border-t border-gray-200 my-2"></div>
+                                        <a href="../Homepage/index.html" class="flex items-center px-4 py-2 hover:bg-gray-100"><i class="fas fa-sign-out-alt mr-3"></i><span>Logout</span></a>
+                                    </div>
+                                </div>
+                <button id="chatbotButton" title="Chatbot" class="focus:outline-none ml-2 cursor-pointer"><i class="fas fa-robot"></i></button>
+                <!-- Chatbox Component -->
+                <div id="chatboxContainer" class="fixed bottom-6 right-6 z-50 w-96 max-w-full bg-transparent hidden">
+                    <div class="rounded-lg shadow-lg border border-gray-300 bg-white overflow-hidden">
+                        <div class="bg-black text-white flex items-center justify-between px-4 py-2">
+                            <span class="font-bold">MigsBot</span>
+                            <div class="flex items-center space-x-2">
+                                <button title="Alert" class="text-orange-400 hover:text-orange-600 focus:outline-none"><i class="fas fa-exclamation-triangle"></i></button>
+                                <button id="closeChatbox" title="Close" class="text-blue-300 hover:text-blue-500 focus:outline-none"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+                        <div class="p-4 bg-gray-50 flex flex-col gap-3" style="height: 320px; overflow-y: auto;">
+                            <div class="self-end bg-white border border-gray-300 rounded-lg px-3 py-2 shadow-sm max-w-xs relative">
+                                <span>Rephrase 'This is an ai chatbot generated for better communication and simpler work flows'</span>
+                                <span class="absolute right-2 top-2 text-gray-400 cursor-pointer"><i class="far fa-copy"></i></span>
+                            </div>
+                            <div class="self-start bg-white border border-gray-300 rounded-lg px-3 py-2 shadow-sm max-w-xs relative">
+                                <span>This AI chatbot has been developed to optimize communication and simplify work processes, ultimately leading to smoother operations.</span>
+                                <span class="absolute right-2 top-2 text-gray-400 cursor-pointer"><i class="far fa-copy"></i></span>
+                            </div>
+                            <div class="self-end bg-white border border-gray-300 rounded-lg px-3 py-2 shadow-sm max-w-xs relative">
+                                <span>Thank You!</span>
+                                <span class="absolute right-2 top-2 text-gray-400 cursor-pointer"><i class="far fa-copy"></i></span>
+                            </div>
+                        </div>
+                        <div class="px-4 py-2 bg-white border-t border-gray-200 flex items-center gap-2">
+                            <input type="text" placeholder="Type a new message here" class="flex-1 border border-gray-300 rounded-full px-4 py-2 text-sm focus:outline-none" />
+                            <button class="text-gray-500 hover:text-gray-700 focus:outline-none"><i class="far fa-image"></i></button>
+                            <button class="text-gray-500 hover:text-gray-700 focus:outline-none"><i class="far fa-smile"></i></button>
+                            <button class="bg-black text-white rounded-full px-4 py-2 ml-2 hover:bg-gray-800 focus:outline-none"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto py-12 px-4">
+        <div class="text-sm breadcrumbs mb-8">
+            <ul>
+                <li><a href="../Account/index.html">My Account</a></li>
+                <li><a href="../ProductDetails/index.html">Product</a></li>
+                <li><a href="../Cart/index.html">View Cart</a></li>
+                <li>CheckOut</li>
+            </ul>
+        </div>
+
+        <div class="flex flex-col lg:flex-row gap-10">
+            <div class="w-full lg:w-3/5 bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+                <h2 class="text-3xl font-extrabold mb-8 text-gray-800 tracking-tight">Billing Details</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-8">
+                    <div>
+                        <label for="full-name" class="block text-gray-700 text-sm mb-2">First Name Last Name*</label>
+                        <input type="text" id="full-name" class="w-full border-gray-300 rounded-lg shadow-sm py-3 px-4 focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-red-400 bg-gray-50 transition" placeholder="e.g. Juan Dela Cruz">
+                    </div>
+                    <div>
+                        <label for="company-name" class="block text-gray-700 text-sm mb-2">Company Name or Landmark</label>
+                        <input type="text" id="company-name" class="w-full border-gray-300 rounded-lg shadow-sm py-3 px-4 focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-red-400 bg-gray-50 transition" placeholder="Optional">
+                    </div>
+                    <div>
+                        <label for="street-address" class="block text-gray-700 text-sm mb-2">Street Address*</label>
+                        <input type="text" id="street-address" class="w-full border-gray-300 rounded-lg shadow-sm py-3 px-4 focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-red-400 bg-gray-50 transition" placeholder="House No., Street, Barangay">
+                    </div>
+                    <div>
+                        <label for="apartment" class="block text-gray-700 text-sm mb-2">Apartment, floor, etc. (optional)</label>
+                        <input type="text" id="apartment" class="w-full border-gray-300 rounded-lg shadow-sm py-3 px-4 focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-red-400 bg-gray-50 transition" placeholder="Optional">
+                    </div>
+                    <div>
+                        <label for="town-city" class="block text-gray-700 text-sm mb-2">Town/City*</label>
+                        <input type="text" id="town-city" class="w-full border-gray-300 rounded-lg shadow-sm py-3 px-4 focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-red-400 bg-gray-50 transition" placeholder="e.g. Quezon City">
+                    </div>
+                    <div>
+                        <label for="phone-number" class="block text-gray-700 text-sm mb-2">Phone Number*</label>
+                        <input type="text" id="phone-number" class="w-full border-gray-300 rounded-lg shadow-sm py-3 px-4 focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-red-400 bg-gray-50 transition" placeholder="09XXXXXXXXX">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="email-address" class="block text-gray-700 text-sm mb-2">Email Address*</label>
+                        <input type="email" id="email-address" class="w-full border-gray-300 rounded-lg shadow-sm py-3 px-4 focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-red-400 bg-gray-50 transition" placeholder="your@email.com">
+                    </div>
+                </div>
+                <div class="mt-6 flex items-center">
+                    <input type="checkbox" id="save-info" class="mr-2 text-red-500 focus:ring-red-500 accent-red-500">
+                    <label for="save-info" class="text-sm text-gray-700">Save this information for faster check-out next time</label>
+                </div>
+            </div>
+            <div class="w-full lg:w-2/5 bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+                <div class="flex items-center mb-4 hover:bg-gray-50 rounded-lg transition">
+                    <img src="https://via.placeholder.com/50" alt="Modern Style Barong" class="w-12 h-12 mr-4">
+                    <span class="flex-grow text-gray-800">Modern Style Barong</span>
+                    <span class="text-gray-800">₱???</span>
+                </div>
+                <div class="flex items-center mb-6 hover:bg-gray-50 rounded-lg transition">
+                    <img src="https://via.placeholder.com/50" alt="Embroidered Alampay" class="w-12 h-12 mr-4">
+                    <span class="flex-grow text-gray-800">Embroidered Alampay</span>
+                    <span class="text-gray-800">₱???</span>
+                </div>
+                <div class="border-b border-gray-200 pb-4 mb-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-gray-700">Subtotal:</span>
+                        <span class="text-gray-800">₱???</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-700">Shipping:</span>
+                        <span class="text-green-600">Free</span>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center font-bold text-2xl mb-8 text-gray-900">
+                    <span>Total:</span>
+                    <span>₱???</span>
+                </div>
+                <div class="space-y-4 mb-8">
+                    <div class="flex items-center hover:bg-gray-50 rounded-lg px-2 transition">
+                        <input type="radio" id="bank" name="payment-method" class="mr-2 text-red-500 focus:ring-red-500">
+                        <label for="bank" class="text-gray-700">Bank</label>
+                        <div class="ml-auto flex items-center space-x-2">
+                            <img src="https://via.placeholder.com/40x20" alt="Visa" class="h-5">
+                            <img src="https://via.placeholder.com/40x20" alt="Mastercard" class="h-5">
+                        </div>
+                    </div>
+                    <div class="flex items-center hover:bg-gray-50 rounded-lg px-2 transition">
+                        <input type="radio" id="e-wallet" name="payment-method" class="mr-2 text-red-500 focus:ring-red-500">
+                        <label for="e-wallet" class="text-gray-700">E-Wallet</label>
+                        <div class="ml-auto flex items-center space-x-2">
+                            <img src="https://via.placeholder.com/40x20" alt="GCash" class="h-5">
+                            <img src="https://via.placeholder.com/40x20" alt="Maya" class="h-5">
+                        </div>
+                    </div>
+                    <div class="flex items-center hover:bg-gray-50 rounded-lg px-2 transition">
+                        <input type="radio" id="cash-on-delivery" name="payment-method" class="mr-2 text-red-500 focus:ring-red-500" checked>
+                        <label for="cash-on-delivery" class="text-gray-700">Cash on delivery</label>
+                    </div>
+                    <div class="flex items-center hover:bg-gray-50 rounded-lg px-2 transition">
+                        <input type="radio" id="in-store-pickup" name="payment-method" class="mr-2 text-red-500 focus:ring-red-500">
+                        <label for="in-store-pickup" class="text-gray-700">In Store Pickup</label>
+                    </div>
+                </div>
+                <div class="flex mb-8">
+                    <input type="text" placeholder="Coupon Code" class="flex-grow border-gray-300 rounded-l-md shadow-sm py-3 px-4 focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-red-400 bg-gray-50 transition">
+                    <button class="bg-red-500 text-white px-6 py-3 rounded-r-md hover:bg-red-600 font-semibold transition">Apply Coupon</button>
+                </div>
+                <a href="../OrderCompletedState/index.html" class="block w-full bg-red-500 text-white py-4 rounded-lg hover:bg-red-600 font-bold text-lg text-center shadow transition">Place Order</a>
+            </div>
+        </div>
+    </main>
+    <footer id="main-footer" class="bg-black text-white py-12 mt-16 shadow-inner">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 px-4">
+            <div>
+                <h3 class="text-xl font-bold mb-4">3Migs Gowns & Barong</h3>
+                <p class="text-sm">Subscribe</p>
+                <p class="text-xs mb-4">Get 10% off your first order</p>
+                <div class="flex">
+                    <input type="email" placeholder="Enter your email" class="bg-gray-800 text-white text-sm px-4 py-2 rounded-l-md focus:outline-none">
+                    <button class="bg-red-500 px-4 py-2 rounded-r-md hover:bg-red-600">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold mb-4">Support</h3>
+                <p class="text-sm">Pandi, Bulacan</p>
+                <p class="text-sm">3migs@gmail.com</p>
+                <p class="text-sm">+639*********</p>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold mb-4">Account</h3>
+                <ul>
+                    <li class="mb-2"><a href="#" class="text-sm hover:underline">My Account</a></li>
+                    <li class="mb-2"><a href="#" class="text-sm hover:underline">Login / Register</a></li>
+                    <li class="mb-2"><a href="#" class="text-sm hover:underline">Cart</a></li>
+                    <li class="mb-2"><a href="#" class="text-sm hover:underline">Wishlist</a></li>
+                    <li class="mb-2"><a href="#" class="text-sm hover:underline">Shop</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold mb-4">Quick Link</h3>
+                <ul>
+                    <li class="mb-2"><a href="#" class="text-sm hover:underline">Privacy Policy</a></li>
+                    <li class="mb-2"><a href="#" class="text-sm hover:underline">Terms Of Use</a></li>
+                    <li class="mb-2"><a href="#" class="text-sm hover:underline">FAQ</a></li>
+                    <li class="mb-2"><a href="#" class="text-sm hover:underline">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center text-xs mt-8">
+            <p>Copyright Group 6 2025. All right reserved</p>
+        </div>
+    </footer>
+</body>
+<script>
+    // Smooth scroll for Contact/About links
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('a.scroll-to-footer').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                const target = document.getElementById('main-footer');
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    });
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const chatbotBtn = document.getElementById('chatbotButton');
+    const chatbox = document.getElementById('chatboxContainer');
+    const closeBtn = document.getElementById('closeChatbox');
+    if (chatbotBtn && chatbox) {
+        chatbotBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            chatbox.classList.toggle('hidden');
+        });
+    }
+    if (closeBtn && chatbox) {
+        closeBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            chatbox.classList.add('hidden');
+        });
+    }
+    document.addEventListener('click', function(e) {
+        if (chatbox && !chatbox.classList.contains('hidden') && !chatbox.contains(e.target) && e.target !== chatbotBtn) {
+            chatbox.classList.add('hidden');
+        }
+    });
+});
+</script>
+</html>

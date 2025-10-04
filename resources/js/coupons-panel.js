@@ -188,7 +188,7 @@ class CouponsPanel {
         if (closeBtn) closeBtn.onclick = close;
         if (cancelBtn) cancelBtn.onclick = close;
 
-        const saveBtn = document.getElementById('coupon-modal-save');
+        const saveBtn = document.getElementById('coupon-modal-save');   
         if (saveBtn) {
             saveBtn.onclick = async () => {
                 const payload = {

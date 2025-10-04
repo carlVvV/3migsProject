@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Language dropdown
+            const langBtn = document.getElementById('lang-dropdown-btn');
+            const langMenu = document.getElementById('lang-dropdown-menu');
+            const langOptions = langMenu ? langMenu.querySelectorAll('button[data-lang]') : [];
+            const selectedLang = document.getElementById('selected-lang');
+            if (langBtn && langMenu && selectedLang) {
+                langBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    langMenu.classList.toggle('hidden');
+                });
+                langOptions.forEach(function(btn) {
+                    btn.addEventListener('click', function() {
+                        selectedLang.innerText = btn.innerText;
+                        langMenu.classList.add('hidden');
+                    });
+                });
+                document.addEventListener('click', function(e) {
+                    if (!langMenu.contains(e.target) && e.target !== langBtn) {
+                        langMenu.classList.add('hidden');
+                    }
+                });
+            }
+        });
+    </script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const profileBtn = document.getElementById('profile-btn');
+                const profileMenu = document.getElementById('profileMenu');
+                if (profileBtn && profileMenu) {
+                    profileBtn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        profileMenu.classList.toggle('hidden');
+                    });
+                    document.addEventListener('click', function() {
+                        profileMenu.classList.add('hidden');
+                    });
+                }
+            });
+        </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart - E-Commerce HomePage</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="cart.css">
+</head>
+<body>
+    <!-- Overall Layout Container -->
+    <div class="min-h-screen bg-gray-100 flex flex-col">
+        <!-- Top Bar -->
+        <div class="bg-black text-white py-2">
+            <div class="container mx-auto flex items-center justify-center relative px-4">
+                <span class="absolute left-0"></span>
+                <span class="text-xs mx-auto">Summer Sale For All Gown & Barong And Free Express Delivery <a href="#" class="underline">ShopNow</a></span>
+                <div class="absolute right-0">
+                    <div class="relative inline-block">
+                        <button id="lang-dropdown-btn" class="bg-black text-white text-xs border-none px-2 py-1 rounded focus:outline-none flex items-center">
+                            <span id="selected-lang">English</span>
+                            <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                        <div id="lang-dropdown-menu" class="hidden absolute right-0 mt-1 w-28 bg-white text-black rounded shadow-lg z-50">
+                            <button class="block w-full text-left px-4 py-2 hover:bg-gray-200" data-lang="en">English</button>
+                            <button class="block w-full text-left px-4 py-2 hover:bg-gray-200" data-lang="fil">Filipino</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Header -->
+        <header class="bg-white shadow-md">
+            <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+                <div class="flex items-center space-x-8">
+                    <a href="#" class="text-2xl font-bold text-gray-800">3Migs Gowns & Barong</a>
+                    <nav class="hidden md:flex space-x-6">
+                        <a href="../Homepagewithaccount/index.html" class="text-gray-600 hover:text-gray-900">Home</a>
+                        <a href="#main-footer" class="text-gray-600 hover:text-gray-900 font-medium scroll-to-footer">Contact</a>
+                        <a href="#main-footer" class="text-gray-600 hover:text-gray-900 font-medium scroll-to-footer">About</a>
+                    </nav>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <input type="text" placeholder="What are you looking for?" class="border border-gray-300 rounded-md py-2 px-4 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <i class="fas fa-search absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                    </div>
+                    <div class="flex items-center space-x-4 text-gray-600 text-lg">
+                        <a href="../Wishlist/index.html" class="relative inline-block">
+                                                    <i class="far fa-heart"></i>
+                                                    <span class="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold border-2 border-white">4</span>
+                                                </a>
+                        <a href="../Cart/index.html"><i class="fas fa-shopping-cart"></i></a>
+                        <div class="relative">
+                          <button id="profile-btn" class="focus:outline-none"><i class="far fa-user"></i></button>
+                          <div id="profileMenu" class="absolute right-0 mt-3 w-64 bg-gray-800 text-white rounded-md shadow-lg py-2 hidden z-50">
+                              <a href="../Account/index.html" class="flex items-center px-4 py-2 hover:bg-gray-700">
+                                  <i class="far fa-user mr-3"></i>
+                                  <span>Manage My Account</span>
+                              </a>
+                              <a href="../Cart/index.html" class="flex items-center px-4 py-2 hover:bg-gray-700">
+                                  <i class="fas fa-receipt mr-3"></i>
+                                  <span>My Order</span>
+                              </a>
+                              <a href="#" class="flex items-center px-4 py-2 hover:bg-gray-700">
+                                  <i class="fas fa-undo mr-3"></i>
+                                  <span>My Cancellations</span>
+                              </a>
+                              <a href="#" class="flex items-center px-4 py-2 hover:bg-gray-700">
+                                  <i class="fas fa-undo mr-3"></i>
+                                  <span>My Reviews</span>
+                              </a>
+                              <div class="border-t border-gray-700 my-2"></div>
+                              <a href="../Homepage/index.html" class="flex items-center px-4 py-2 hover:bg-gray-700">
+                                  <i class="fas fa-sign-out-alt mr-3"></i>
+                                  <span>Logout</span>
+                              </a>
+                          </div>
+                        </div>
+                        <button id="chatbotButton" title="Chatbot" class="focus:outline-none"><i class="fas fa-robot"></i></button>
+                        <!-- Chatbox Component -->
+                        <div id="chatboxContainer" class="fixed bottom-8 right-8 z-50 w-96 max-w-full bg-transparent" style="display: none;">
+                            <div class="rounded-t-lg rounded-b-lg shadow-lg border border-gray-300 bg-white" style="overflow: visible;">
+                                <div class="bg-black text-white rounded-t-lg flex items-center justify-between px-4 py-2 relative">
+                                    <span class="font-bold">MigsBot</span>
+                                    <div class="flex items-center space-x-2">
+                                        <button title="Alert" class="text-orange-400 hover:text-orange-600 focus:outline-none"><i class="fas fa-exclamation-triangle"></i></button>
+                                        <button id="closeChatbox" title="Close" class="text-blue-300 hover:text-blue-500 focus:outline-none"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                    <div class="absolute -top-4 right-8 w-0 h-0 border-l-8 border-r-8 border-b-8 border-l-transparent border-r-transparent border-b-black"></div>
+                                </div>
+                                <div class="p-4 bg-gray-50 min-h-[250px] flex flex-col gap-3" style="height: 320px;">
+                                    <div class="flex flex-col gap-2">
+                                        <div class="self-end bg-white border border-gray-300 rounded-lg px-3 py-2 shadow-sm max-w-xs relative">
+                                            <span>Rephrase 'This is an ai chatbot generated for better communication and simpler work flows'</span>
+                                            <span class="absolute right-2 top-2 text-gray-400"><i class="far fa-copy"></i></span>
+                                        </div>
+                                        <div class="self-start bg-white border border-gray-300 rounded-lg px-3 py-2 shadow-sm max-w-xs relative">
+                                            <span>This AI chatbot has been developed to optimize communication and simplify work processes, ultimately leading to smoother operations.</span>
+                                            <span class="absolute right-2 top-2 text-gray-400"><i class="far fa-copy"></i></span>
+                                        </div>
+                                        <div class="self-end bg-white border border-gray-300 rounded-lg px-3 py-2 shadow-sm max-w-xs relative">
+                                            <span>Thank You!</span>
+                                            <span class="absolute right-2 top-2 text-gray-400"><i class="far fa-copy"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="px-4 py-2 bg-white rounded-b-lg border-t border-gray-200 flex items-center gap-2">
+                                    <input type="text" placeholder="Type a new message here" class="flex-1 border border-gray-300 rounded-full px-4 py-2 text-sm focus:outline-none" />
+                                    <button class="text-gray-500 hover:text-gray-700 focus:outline-none"><i class="far fa-image"></i></button>
+                                    <button class="text-gray-500 hover:text-gray-700 focus:outline-none"><i class="far fa-smile"></i></button>
+                                    <button class="bg-black text-white rounded-full px-4 py-2 ml-2 hover:bg-gray-800 focus:outline-none"><i class="fas fa-paper-plane"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-200 py-2">
+                <div class="container mx-auto px-4 flex justify-start space-x-8">
+                </div>
+            </div>
+        </header>
+
+<script>
+// Chatbox toggle logic
+document.addEventListener('DOMContentLoaded', function() {
+    const chatbotBtn = document.getElementById('chatbotButton');
+    const chatbox = document.getElementById('chatboxContainer');
+    const closeBtn = document.getElementById('closeChatbox');
+    if (chatbotBtn && chatbox) {
+        chatbotBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (chatbox.style.display === 'none' || chatbox.style.display === '') {
+                chatbox.style.display = 'block';
+            } else {
+                chatbox.style.display = 'none';
+            }
+        });
+    }
+    if (closeBtn && chatbox) {
+        closeBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            chatbox.style.display = 'none';
+        });
+    }
+    // Optional: Hide chatbox when clicking outside
+    document.addEventListener('click', function(e) {
+        if (chatbox && chatbox.style.display === 'block' && !chatbox.contains(e.target) && e.target !== chatbotBtn) {
+            chatbox.style.display = 'none';
+        }
+    });
+});
+</script>
+
+        <!-- Main Content (Cart Page Specific) -->
+        <main class="flex-grow container mx-auto px-4 py-8">
+            <div class="text-sm breadcrumbs mb-4 text-gray-600">
+                <a href="../Homepagewithaccount/index.html" class="hover:underline">Home</a>
+                <span class="mx-2">/</span>
+                <span>Cart</span>
+            </div>
+
+            <h1 class="text-3xl font-bold mb-6 text-gray-800">Cart</h1>
+
+            <div class="flex flex-col lg:flex-row gap-8">
+                <div class="flex-1 bg-white p-6 rounded-lg shadow-md">
+                    <div class="overflow-x-auto">
+                        <table class="table-auto w-full text-left">
+                            <thead>
+                                <tr class="border-b border-gray-200 text-gray-600">
+                                    <th class="px-4 py-3">Product</th>
+                                    <th class="px-4 py-3">Price</th>
+                                    <th class="px-4 py-3">Quantity</th>
+                                    <th class="px-4 py-3">Subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Cart Item 1 -->
+                                <tr class="border-b border-gray-100">
+                                    <td class="px-4 py-4 flex items-center">
+                                        <button class="text-red-500 hover:text-red-700 mr-4"><i class="fas fa-times-circle"></i></button>
+                                        <img src="https://via.placeholder.com/50x50?text=Product" alt="Modern Style Barong" class="w-16 h-16 object-cover rounded-md mr-4">
+                                        <span class="font-medium text-gray-800">Modern Style Barong</span>
+                                    </td>
+                                    <td class="px-4 py-4 text-gray-700">₱999</td>
+                                    <td class="px-4 py-4">
+                                        <input type="number" value="1" min="1" class="border border-gray-300 rounded-md w-20 px-2 py-1 text-center text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </td>
+                                    <td class="px-4 py-4 text-gray-700">₱999</td>
+                                </tr>
+                                <!-- Cart Item 2 -->
+                                <tr class="border-b border-gray-100">
+                                    <td class="px-4 py-4 flex items-center">
+                                        <button class="text-red-500 hover:text-red-700 mr-4"><i class="fas fa-times-circle"></i></button>
+                                        <img src="https://via.placeholder.com/50x50?text=Product" alt="Embroidered Alampay" class="w-16 h-16 object-cover rounded-md mr-4">
+                                        <span class="font-medium text-gray-800">Embroidered Alampay</span>
+                                    </td>
+                                    <td class="px-4 py-4 text-gray-700">₱999</td>
+                                    <td class="px-4 py-4">
+                                        <input type="number" value="2" min="1" class="border border-gray-300 rounded-md w-20 px-2 py-1 text-center text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </td>
+                                    <td class="px-4 py-4 text-gray-700">₱999</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="flex justify-between items-center mt-6">
+                        <a href="../Homepagewithaccount/index.html" class="bg-gray-200 text-gray-800 px-6 py-2 rounded-md hover:bg-gray-300 font-medium block text-center">Return To Shop</a>
+                        <button class="bg-gray-200 text-gray-800 px-6 py-2 rounded-md hover:bg-gray-300 font-medium">Update Cart</button>
+                    </div>
+                </div>
+
+                <div class="w-full lg:w-1/3 bg-white p-6 rounded-lg shadow-md">
+                    <h2 class="text-xl font-bold mb-4 text-gray-800">Cart Total</h2>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-gray-700">Subtotal:</span>
+                        <span class="font-medium text-gray-800">₱???</span>
+                    </div>
+                    <div class="flex justify-between items-center pb-3 border-b border-gray-200 mb-4">
+                        <span class="text-gray-700">Shipping:</span>
+                        <span class="font-medium text-gray-800">Free</span>
+                    </div>
+                    <div class="flex justify-between items-center font-bold text-lg mb-6">
+                        <span class="text-gray-800">Total:</span>
+                        <span class="text-red-500">₱???</span>
+                    </div>
+                    <a href="../CheckOut/index.html" class="w-full bg-red-500 text-white py-3 rounded-md hover:bg-red-600 font-semibold block text-center">Proceed to checkout</a>
+                    
+                    <div class="mt-8 flex items-center space-x-4">
+                        <input type="text" placeholder="Coupon Code" class="border border-gray-300 rounded-md px-4 py-2 flex-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <button class="bg-red-500 text-white px-6 py-2 rounded-md hover:bg-red-600 font-medium">Apply Coupon</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+       <!-- Main Footer -->
+    <footer id="main-footer" class="bg-black text-white py-12 px-4">
+            <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">3Migs Gowns & Barong</h3>
+                    <p class="text-sm mb-2">Subscribe</p>
+                    <p class="text-xs mb-4">Get 10% off your first order</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Enter your email" class="bg-black text-white text-sm px-4 py-2 rounded-l-md focus:outline-none border border-white flex-grow">
+                        <button class="bg-red-500 px-4 py-2 rounded-r-md hover:bg-red-600 border border-red-500">
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Support</h3>
+                    <p class="text-sm">Pandi, Bulacan</p>
+                    <p class="text-sm">3migs@gmail.com</p>
+                    <p class="text-sm">+639*********</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Account</h3>
+                    <ul>
+                        <li class="mb-2"><a href="#" class="text-sm hover:underline">My Account</a></li>
+                        <li class="mb-2"><a href="#" class="text-sm hover:underline">Login / Register</a></li>
+                        <li class="mb-2"><a href="#" class="text-sm hover:underline">Cart</a></li>
+                        <li class="mb-2"><a href="#" class="text-sm hover:underline">Wishlist</a></li>
+                        <li class="mb-2"><a href="#" class="text-sm hover:underline">Shop</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Link</h3>
+                    <ul>
+                        <li class="mb-2"><a href="#" class="text-sm hover:underline">Privacy Policy</a></li>
+                        <li class="mb-2"><a href="#" class="text-sm hover:underline">Terms Of Use</a></li>
+                        <li class="mb-2"><a href="#" class="text-sm hover:underline">FAQ</a></li>
+                        <li class="mb-2"><a href="#" class="text-sm hover:underline">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center text-xs mt-8">
+                <p class="text-gray-500">Copyright Group 6 2025. All right reserved</p>
+            </div>
+        </footer>
+    </div>
+</body>
+<script>
+    // Smooth scroll for Contact/About links
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('a.scroll-to-footer').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                const target = document.getElementById('main-footer');
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    });
+</script>
+</html>

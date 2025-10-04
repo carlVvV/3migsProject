@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const profileBtn = document.getElementById('profile-btn');
+                const profileMenu = document.getElementById('profileMenu');
+                if (profileBtn && profileMenu) {
+                    profileBtn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        profileMenu.classList.toggle('hidden');
+                    });
+                    document.addEventListener('click', function() {
+                        profileMenu.classList.add('hidden');
+                    });
+                }
+            });
+        </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist - E-Commerce HomePage</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Wishlist/style.css">
+
+</head>
+<body>
+  <header class="bg-black text-white py-2">
+        <div class="container mx-auto flex items-center justify-center relative px-4">
+            <span class="absolute left-0"></span>
+            <span class="text-xs mx-auto">Summer Sale For All Gown & Barong And Free Express Delivery <a href="#" class="underline">ShopNow</a></span>
+            <div class="absolute right-0">
+                <div class="relative inline-block">
+                    <button id="lang-dropdown-btn" class="bg-black text-white text-xs border-none px-2 py-1 rounded focus:outline-none flex items-center">
+                        <span id="selected-lang">English</span>
+                        <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div id="lang-dropdown-menu" class="hidden absolute right-0 mt-1 w-28 bg-white text-black rounded shadow-lg z-50">
+                        <button class="block w-full text-left px-4 py-2 hover:bg-gray-200" data-lang="en">English</button>
+                        <button class="block w-full text-left px-4 py-2 hover:bg-gray-200" data-lang="fil">Filipino</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+        <!-- Header -->
+        <header class="bg-white shadow-md">
+            <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+                <div class="flex items-center space-x-8">
+                    <a href="#" class="text-2xl font-bold text-gray-800">3Migs Gowns & Barong</a>
+                    <nav class="hidden md:flex space-x-6">
+                         <a href="../Homepagewithaccount/index.html" class="text-gray-600 hover:text-gray-900 font-medium">Home</a>
+                        <a href="#main-footer" class="text-gray-600 hover:text-gray-900 font-medium scroll-to-footer">Contact</a>
+                        <a href="#main-footer" class="text-gray-600 hover:text-gray-900 font-medium scroll-to-footer">About</a>
+                    </nav>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <input type="text" placeholder="What are you looking for?" class="border border-gray-300 rounded-md py-2 px-4 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <i class="fas fa-search absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                    </div>
+                    <div class="flex items-center space-x-4 text-gray-600 text-lg">
+                                                <a href="../Wishlist/index.html" class="relative inline-block">
+                                                    <i class="far fa-heart"></i>
+                                                </a>
+                                                <a href="../Cart/index.html" class="relative inline-block">
+                                                    <i class="fas fa-shopping-cart"></i>
+                                                    <span class="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold border-2 border-white">2</span>
+                                                </a>
+                                                <div class="relative">
+                                                    <button id="profile-btn" class="focus:outline-none"><i class="far fa-user"></i></button>
+                                                    <div id="profileMenu" class="absolute right-0 mt-3 w-64 bg-gray-800 text-white rounded-md shadow-lg py-2 hidden z-50">
+                                                            <a href="../Account/index.html" class="flex items-center px-4 py-2 hover:bg-gray-700"><i class="far fa-user mr-3"></i><span>Manage My Account</span></a>
+                                                            <a href="../Cart/index.html" class="flex items-center px-4 py-2 hover:bg-gray-700"><i class="fas fa-receipt mr-3"></i><span>My Order</span></a>
+                                                            <a href="#" class="flex items-center px-4 py-2 hover:bg-gray-700"><i class="fas fa-undo mr-3"></i><span>My Cancellations</span></a>
+                                                            <a href="#" class="flex items-center px-4 py-2 hover:bg-gray-700"><i class="far fa-star mr-3"></i><span>My Reviews</span></a>
+                                                            <div class="border-t border-gray-700 my-2"></div>
+                                                            <a href="../Homepage/index.html" class="flex items-center px-4 py-2 hover:bg-gray-700"><i class="fas fa-sign-out-alt mr-3"></i><span>Logout</span></a>
+                                                    </div>
+                                                </div>
+                        <button id="chatbotButton" class="focus:outline-none ml-2" title="Chatbot"><i class="fas fa-robot"></i></button>
+                    </div>
+                </div>
+            </div>
+            
+        </header>
+
+        <main class="container mx-auto py-8 px-4">
+            <div class="flex justify-between items-center mb-6">
+                <h1 class="text-2xl font-bold">Wishlist (4)</h1>
+                <button class="border border-gray-300 px-6 py-2 rounded-md hover:bg-gray-100">Move All To Bag</button>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12">
+                <div class="border rounded-md shadow-sm overflow-hidden flex flex-col h-full product-card">
+                    <div class="relative">
+                        <img src="https://via.placeholder.com/200x250" alt="Lady Barong with Ethnic Sleeves" class="w-full h-auto">
+                        <span class="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded">-40%</span>
+                        <button class="absolute top-2 right-2 bg-white rounded-full p-1 shadow"><svg class="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg></button>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-semibold text-gray-800">Lady Barong with Ethnic Sleeves</h3>
+                        <div class="flex items-center my-1">
+                            <p class="text-gray-900 font-bold">₱??? <span class="text-red-500 line-through">₱???</span></p>
+                            <div class="flex text-yellow-500 text-xs ml-2">
+                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-3 h-3 text-gray-300" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            </div>
+                            <span class="text-gray-600 text-xs ml-1">(88)</span>
+                        </div>
+                    </div>
+                    <button class="w-full bg-black text-white py-2 mt-auto hover:bg-gray-800 add-to-cart-btn">Add To Cart</button>
+                </div>
+                <div class="border rounded-md shadow-sm overflow-hidden flex flex-col h-full">
+                    <div class="relative">
+                        <img src="https://via.placeholder.com/200x250" alt="Contemporary Style Barong" class="w-full h-auto">
+                        <span class="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded">-36%</span>
+                        <button class="absolute top-2 right-2 bg-white rounded-full p-1 shadow"><svg class="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg></button>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-semibold text-gray-800">Contemporary Style Barong</h3>
+                        <div class="flex items-center my-1">
+                            <p class="text-gray-900 font-bold">₱??? <span class="text-red-500 line-through">₱???</span></p>
+                            <div class="flex text-yellow-500 text-xs ml-2">
+                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-3 h-3 text-gray-300" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            </div>
+                            <span class="text-gray-600 text-xs ml-1">(76)</span>
+                        </div>
+                    </div>
+                    <button class="w-full bg-black text-white py-2 mt-auto hover:bg-gray-800 add-to-cart-btn">Add To Cart</button>
+                </div>
+                <div class="border rounded-md shadow-sm overflow-hidden flex flex-col h-full">
+                    <div class="relative">
+                        <img src="https://via.placeholder.com/200x250" alt="Modern Style Barong" class="w-full h-auto">
+                        <span class="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded">-30%</span>
+                        <button class="absolute top-2 right-2 bg-white rounded-full p-1 shadow"><svg class="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg></button>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-semibold text-gray-800">Modern Style Barong</h3>
+                        <div class="flex items-center my-1">
+                            <p class="text-gray-900 font-bold">₱??? <span class="text-red-500 line-through">₱???</span></p>
+                            <div class="flex text-yellow-500 text-xs ml-2">
+                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-3 h-3 text-gray-300" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            </div>
+                            <span class="text-gray-600 text-xs ml-1">(99)</span>
+                        </div>
+                    </div>
+                    <button class="w-full bg-black text-white py-2 mt-auto hover:bg-gray-800 add-to-cart-btn">Add To Cart</button>
+                </div>
+                <div class="border rounded-md shadow-sm overflow-hidden flex flex-col h-full">
+                    <div class="relative">
+                        <img src="https://via.placeholder.com/200x250" alt="Embroidered Alampay" class="w-full h-auto">
+                        <span class="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded">-26%</span>
+                        <button class="absolute top-2 right-2 bg-white rounded-full p-1 shadow"><i class="fas fa-trash-alt w-4 h-4 text-gray-700"></i></button>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-semibold text-gray-800">Embroidered Alampay</h3>
+                        <div class="flex items-center my-1">
+                            <p class="text-gray-900 font-bold">₱??? <span class="text-red-500 line-through">₱???</span></p>
+                            <div class="flex text-yellow-500 text-xs ml-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="text-gray-600 text-xs ml-1">(47)</span>
+                        </div>
+                    </div>
+                    <button class="w-full bg-black text-white py-2 mt-auto hover:bg-gray-800 add-to-cart-btn">Add To Cart</button>
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center mb-6 mt-12">
+                <h2 class="text-xl font-bold border-l-4 border-red-500 pl-3">Just For You</h2>
+                <button class="border border-gray-300 px-6 py-2 rounded-md hover:bg-gray-100">See All</button>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <div class="border rounded-md shadow-sm overflow-hidden flex flex-col h-full">
+                    <div class="relative">
+                        <img src="https://via.placeholder.com/200x250" alt="Embroidered Alampay" class="w-full h-auto">
+                        <span class="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded">-25%</span>
+                        <button class="absolute top-2 right-2 bg-white rounded-full p-1 shadow"><i class="fas fa-eye w-4 h-4 text-gray-700"></i></button>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-semibold text-gray-800">Embroidered Alampay</h3>
+                        <div class="flex items-center my-1">
+                            <p class="text-gray-900 font-bold">₱??? <span class="text-red-500 line-through">₱???</span></p>
+                            <div class="flex text-yellow-500 text-xs">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="text-gray-600 text-xs ml-1">(47)</span>
+                        </div>
+                    </div>
+                    <button class="w-full bg-black text-white py-2 mt-auto hover:bg-gray-800 add-to-cart-btn">Add To Cart</button>
+                </div>
+                <div class="border rounded-md shadow-sm overflow-hidden flex flex-col h-full">
+                    <div class="relative">
+                        <img src="https://via.placeholder.com/200x250" alt="Lady Barong with Ethnic Sleeves" class="w-full h-auto">
+                        <span class="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded">-40%</span>
+                        <button class="absolute top-2 right-2 bg-white rounded-full p-1 shadow"><i class="fas fa-eye w-4 h-4 text-gray-700"></i></button>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-semibold text-gray-800">Lady Barong with Ethnic Sleeves</h3>
+                        <div class="flex items-center my-1">
+                            <p class="text-gray-900 font-bold">₱??? <span class="text-red-500 line-through">₱???</span></p>
+                            <div class="flex text-yellow-500 text-xs">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="text-gray-600 text-xs ml-1">(88)</span>
+                        </div>
+                    </div>
+                    <button class="w-full bg-black text-white py-2 mt-auto hover:bg-gray-800 add-to-cart-btn">Add To Cart</button>
+                </div>
+                <div class="border rounded-md shadow-sm overflow-hidden flex flex-col h-full">
+                    <div class="relative">
+                        <img src="https://via.placeholder.com/200x250" alt="Modern Style Barong (Elegant)" class="w-full h-auto">
+                        <span class="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded">-30%</span>
+                        <button class="absolute top-2 right-2 bg-white rounded-full p-1 shadow"><i class="fas fa-eye w-4 h-4 text-gray-700"></i></button>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-semibold text-gray-800">Modern Style Barong (Elegant)</h3>
+                        <div class="flex items-center my-1">
+                            <p class="text-gray-900 font-bold">₱??? <span class="text-red-500 line-through">₱???</span></p>
+                            <div class="flex text-yellow-500 text-xs">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="text-gray-600 text-xs ml-1">(99)</span>
+                        </div>
+                    </div>
+                    <button class="w-full bg-black text-white py-2 mt-auto hover:bg-gray-800 add-to-cart-btn">Add To Cart</button>
+                </div>
+                <div class="border rounded-md shadow-sm overflow-hidden flex flex-col h-full">
+                    <div class="relative">
+                        <img src="https://via.placeholder.com/200x250" alt="Contemporary Style Barong (Classic)" class="w-full h-auto">
+                        <span class="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded">-36%</span>
+                        <button class="absolute top-2 right-2 bg-white rounded-full p-1 shadow"><i class="fas fa-eye w-4 h-4 text-gray-700"></i></button>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-semibold text-gray-800">Contemporary Style Barong (Classic)</h3>
+                        <div class="flex items-center my-1">
+                            <p class="text-gray-900 font-bold">₱??? <span class="text-red-500 line-through">₱???</span></p>
+                            <div class="flex text-yellow-500 text-xs">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="text-gray-600 text-xs ml-1">(76)</span>
+                        </div>
+                    </div>
+                    <button class="w-full bg-black text-white py-2 mt-auto hover:bg-gray-800 add-to-cart-btn">Add To Cart</button>
+                </div>
+                <div class="border rounded-md shadow-sm overflow-hidden flex flex-col h-full">
+                    <div class="relative">
+                        <img src="https://via.placeholder.com/200x250" alt="Modern Style Barong (Traditional)" class="w-full h-auto">
+                        <span class="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded">-30%</span>
+                        <button class="absolute top-2 right-2 bg-white rounded-full p-1 shadow"><i class="fas fa-eye w-4 h-4 text-gray-700"></i></button>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-semibold text-gray-800">Modern Style Barong (Traditional)</h3>
+                        <div class="flex items-center my-1">
+                            <p class="text-gray-900 font-bold">₱??? <span class="text-red-500 line-through">₱???</span></p>
+                            <div class="flex text-yellow-500 text-xs">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="text-gray-600 text-xs ml-1">(99)</span>
+                        </div>
+                    </div>
+                    <button class="w-full bg-black text-white py-2 mt-auto hover:bg-gray-800 add-to-cart-btn">Add To Cart</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer Top Section -->
+        <section class="bg-white py-10 border-t border-gray-200">
+            <div class="container mx-auto px-4 flex justify-around text-center flex-wrap gap-5">
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 bg-gray-200 rounded-full mx-auto mb-2 flex items-center justify-center text-xl">
+                        <i class="fas fa-book text-gray-800"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-800">FREE AND FAST DELIVERY</h4>
+                    <p class="text-sm text-gray-600">Free delivery for all orders over ₱???</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 bg-gray-200 rounded-full mx-auto mb-2 flex items-center justify-center text-xl">
+                        <i class="fas fa-phone-alt text-gray-800"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-800">CUSTOMER SERVICE</h4>
+                    <p class="text-sm text-gray-600">Friendly customer support</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 bg-gray-200 rounded-full mx-auto mb-2 flex items-center justify-center text-xl">
+                        <i class="fas fa-shield-alt text-gray-800"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-800">MONEY BACK GUARANTEE</h4>
+                    <p class="text-sm text-gray-600">We return money within 30 days</p>
+                </div>
+            </div>
+            <div class="text-right mt-8 mr-8">
+                <button class="bg-gray-800 text-white rounded-full p-3 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-700 focus:ring-opacity-50">
+                    <i class="fas fa-arrow-up"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- Main Footer -->
+
+    <!-- Chatbox Component -->
+    <div id="chatboxContainer" class="fixed bottom-6 right-6 z-50 w-96 max-w-full bg-transparent hidden">
+        <div class="rounded-lg shadow-lg border border-gray-300 bg-white overflow-hidden">
+            <div class="bg-black text-white flex items-center justify-between px-4 py-2">
+                <span class="font-bold">MigsBot</span>
+                <div class="flex items-center space-x-2">
+                    <button title="Alert" class="text-orange-400 hover:text-orange-600 focus:outline-none">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </button>
+                    <button id="closeChatbox" title="Close" class="text-blue-300 hover:text-blue-500 focus:outline-none">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="p-4 bg-gray-50 flex flex-col gap-3" style="height: 320px; overflow-y: auto;">
+                <div class="self-end bg-white border border-gray-300 rounded-lg px-3 py-2 shadow-sm max-w-xs relative">
+                    <span>Rephrase 'This is an ai chatbot generated for better communication and simpler work flows'</span>
+                    <span class="absolute right-2 top-2 text-gray-400 cursor-pointer">
+                        <i class="far fa-copy"></i>
+                    </span>
+                </div>
+                <div class="self-start bg-white border border-gray-300 rounded-lg px-3 py-2 shadow-sm max-w-xs relative">
+                    <span>This AI chatbot has been developed to optimize communication and simplify work processes, ultimately leading to smoother operations.</span>
+                    <span class="absolute right-2 top-2 text-gray-400 cursor-pointer">
+                        <i class="far fa-copy"></i>
+                    </span>
+                </div>
+                <div class="self-end bg-white border border-gray-300 rounded-lg px-3 py-2 shadow-sm max-w-xs relative">
+                    <span>Thank You!</span>
+                    <span class="absolute right-2 top-2 text-gray-400 cursor-pointer">
+                        <i class="far fa-copy"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="px-4 py-2 bg-white border-t border-gray-200 flex items-center gap-2">
+                <input type="text" placeholder="Type a new message here" class="flex-1 border border-gray-300 rounded-full px-4 py-2 text-sm focus:outline-none" />
+                <button class="text-gray-500 hover:text-gray-700 focus:outline-none">
+                    <i class="far fa-image"></i>
+                </button>
+                <button class="text-gray-500 hover:text-gray-700 focus:outline-none">
+                    <i class="far fa-smile"></i>
+                </button>
+                <button class="bg-black text-white rounded-full px-4 py-2 ml-2 hover:bg-gray-800 focus:outline-none">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <footer id="main-footer" class="bg-black text-white py-12 px-4">
+            <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">3Migs Gowns & Barong</h3>
+                    <p class="text-sm mb-2">Subscribe</p>
+                    <p class="text-xs mb-4">Get 10% off your first order</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Enter your email" class="bg-black text-white text-sm px-4 py-2 rounded-l-md focus:outline-none border border-white flex-grow">
+                        <button class="bg-red-500 px-4 py-2 rounded-r-md hover:bg-red-600 border border-red-500">
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Support</h3>
+                    <p class="text-sm">Pandi, Bulacan</p>
+                    <p class="text-sm">3migs@gmail.com</p>
+                    <p class="text-sm">+639*********</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Account</h3>
+                    <ul>
+                        <li class="mb-2"><a href="#" class="text-sm hover:underline">My Account</a></li>
+                        <li class="mb-2"><a href="#" class="text-sm hover:underline">Login / Register</a></li>
+                        <li class="mb-2"><a href="#" class="text-sm hover:underline">Cart</a></li>
+                        <li class="mb-2"><a href="#" class="text-sm hover:underline">Wishlist</a></li>
+                        <li class="mb-2"><a href="#" class="text-sm hover:underline">Shop</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Link</h3>
+                    <ul>
+                        <li class="mb-2"><a href="#" class="text-sm hover:underline">Privacy Policy</a></li>
+                        <li class="mb-2"><a href="#" class="text-sm hover:underline">Terms Of Use</a></li>
+                        <li class="mb-2"><a href="#" class="text-sm hover:underline">FAQ</a></li>
+                        <li class="mb-2"><a href="#" class="text-sm hover:underline">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center text-xs mt-8">
+                <p class="text-gray-500">Copyright Group 6 2025. All right reserved</p>
+            </div>
+        </footer>
+    </div>
+</body>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const chatbotBtn = document.getElementById('chatbotButton');
+    const chatbox = document.getElementById('chatboxContainer');
+    const closeBtn = document.getElementById('closeChatbox');
+    if (chatbotBtn && chatbox) {
+        chatbotBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            chatbox.classList.toggle('hidden');
+        });
+    }
+    if (closeBtn && chatbox) {
+        closeBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            chatbox.classList.add('hidden');
+        });
+    }
+    document.addEventListener('click', function(e) {
+        if (chatbox && !chatbox.classList.contains('hidden') && !chatbox.contains(e.target) && e.target !== chatbotBtn) {
+            chatbox.classList.add('hidden');
+        }
+    });
+});
+</script>
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Language dropdown
+            const langBtn = document.getElementById('lang-dropdown-btn');
+            const langMenu = document.getElementById('lang-dropdown-menu');
+            const langOptions = langMenu ? langMenu.querySelectorAll('button[data-lang]') : [];
+            const selectedLang = document.getElementById('selected-lang');
+            if (langBtn && langMenu && selectedLang) {
+                langBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    langMenu.classList.toggle('hidden');
+                });
+                langOptions.forEach(function(btn) {
+                    btn.addEventListener('click', function() {
+                        selectedLang.innerText = btn.innerText;
+                        langMenu.classList.add('hidden');
+                    });
+                });
+                document.addEventListener('click', function(e) {
+                    if (!langMenu.contains(e.target) && e.target !== langBtn) {
+                        langMenu.classList.add('hidden');
+                    }
+                });
+            }
+        });
+    </script>
+<script>
+    // Smooth scroll for Contact/About links
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('a.scroll-to-footer').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                const target = document.getElementById('main-footer');
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    });
+</script>
+</html>

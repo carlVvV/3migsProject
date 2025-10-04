@@ -1,0 +1,31 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+}
+
+.breadcrumbs ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.breadcrumbs ul li {
+    display: inline;
+    font-size: 0.875rem; /* text-sm */
+    color: #6b7280; /* text-gray-500 */
+}
+
+.breadcrumbs ul li:not(:last-child)::after {
+    content: "/";
+    margin: 0 0.5rem;
+    color: #9ca3af; /* text-gray-400 */
+}
+
+.breadcrumbs ul li a {
+    color: #6b7280; /* text-gray-500 */
+    text-decoration: none;
+}
+
+.breadcrumbs ul li a:hover {
+    text-decoration: underline;
+}

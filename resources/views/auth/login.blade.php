@@ -464,6 +464,24 @@
                     </div>
                 @endif
 
+                <!-- Error Messages -->
+                @if (session('error'))
+                    <div class="mb-4 p-3 bg-red-50 border border-red-200 rounded">
+                        <p class="text-sm text-red-800">{{ session('error') }}</p>
+                    </div>
+                @endif
+
+                <!-- Validation Errors -->
+                @if ($errors->any())
+                    <div class="mb-4 p-3 bg-red-50 border border-red-200 rounded">
+                        <ul class="text-sm text-red-800">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 <!-- Form Header -->
                 <div class="form-header">
                     <h1 class="form-title">Log in to 3Migs Gowns & Barong</h1>

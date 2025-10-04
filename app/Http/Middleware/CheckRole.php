@@ -17,26 +17,31 @@ class CheckRole
     {
         // Check if user is authenticated
         if (!auth()->check()) {
-            return redirect('/login');
+            return redirect('/login')->with('error', 'Please log in to access this page.');
         }
 
-        // For now, let's assume any authenticated user can access admin
-        // You can customize this logic based on your user roles
         $user = auth()->user();
         
-        // Simple role check - you can modify this based on your database structure
+        // Check if user has the required role using Spatie Permission
         if ($role === 'admin') {
-            // Check if user has admin role (modify this based on your user table structure)
-            // For example, if you have a 'role' column in users table:
-            // if ($user->role === 'admin') {
-            //     return $next($request);
-            // }
+            if ($user->hasRole('admin')) {
+                return $next($request);
+            }
             
-            // For now, allow any authenticated user (temporary solution)
-            return $next($request);
+            // If user doesn't have admin role, redirect with error
+            return redirect('/dashboard')->with('error', 'Access denied. Admin privileges required.');
+        }
+
+        // Check for other roles if needed
+        if ($role === 'customer') {
+            if ($user->hasRole('customer')) {
+                return $next($request);
+            }
+            
+            return redirect('/dashboard')->with('error', 'Access denied. Customer privileges required.');
         }
 
         // If role doesn't match, redirect to dashboard
-        return redirect('/dashboard')->with('error', 'Access denied. Admin privileges required.');
+        return redirect('/dashboard')->with('error', 'Access denied. Insufficient privileges.');
     }
 }

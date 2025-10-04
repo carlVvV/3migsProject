@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Language dropdown
+            const langBtn = document.getElementById('lang-dropdown-btn');
+            const langMenu = document.getElementById('lang-dropdown-menu');
+            const langOptions = langMenu ? langMenu.querySelectorAll('button[data-lang]') : [];
+            const selectedLang = document.getElementById('selected-lang');
+            if (langBtn && langMenu && selectedLang) {
+                langBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    langMenu.classList.toggle('hidden');
+                });
+                langOptions.forEach(function(btn) {
+                    btn.addEventListener('click', function() {
+                        selectedLang.innerText = btn.innerText;
+                        langMenu.classList.add('hidden');
+                    });
+                });
+                document.addEventListener('click', function(e) {
+                    if (!langMenu.contains(e.target) && e.target !== langBtn) {
+                        langMenu.classList.add('hidden');
+                    }
+                });
+            }
+        });
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account</title>
+    <link rel="stylesheet" href="account.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const profileBtn = document.getElementById('profile-btn');
+                    const profileMenu = document.getElementById('profileMenu');
+                    if (profileBtn && profileMenu) {
+                        profileBtn.addEventListener('click', function(e) {
+                            e.stopPropagation();
+                            profileMenu.classList.toggle('hidden');
+                        });
+                        document.addEventListener('click', function() {
+                            profileMenu.classList.add('hidden');
+                        });
+                    }
+                });
+            </script>
+</head>
+<body>
+    <header class="bg-black text-white py-2">
+        <div class="container mx-auto flex items-center justify-center relative px-4">
+            <span class="absolute left-0"></span>
+            <span class="text-xs mx-auto">Summer Sale For All Gown & Barong And Free Express Delivery <a href="#" class="underline">ShopNow</a></span>
+            <div class="absolute right-0">
+                <div class="relative inline-block">
+                    <button id="lang-dropdown-btn" class="bg-black text-white text-xs border-none px-2 py-1 rounded focus:outline-none flex items-center">
+                        <span id="selected-lang">English</span>
+                        <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div id="lang-dropdown-menu" class="hidden absolute right-0 mt-1 w-28 bg-white text-black rounded shadow-lg z-50">
+                        <button class="block w-full text-left px-4 py-2 hover:bg-gray-200" data-lang="en">English</button>
+                        <button class="block w-full text-left px-4 py-2 hover:bg-gray-200" data-lang="fil">Filipino</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="bg-white shadow-md py-4">
+        <div class="container mx-auto flex justify-between items-center px-4">
+            <div class="flex items-center space-x-8">
+                <span class="text-2xl font-bold">3Migs Gowns & Barong</span>
+                <div class="flex space-x-6 ml-8 text-base">
+                    <a href="../Homepagewithaccount/index.html" class="text-gray-700 hover:text-gray-900 font-medium">Home</a>
+                    <a href="#main-footer" class="text-gray-600 hover:text-gray-900 font-medium scroll-to-footer">Contact</a>
+                    <a href="#main-footer" class="text-gray-600 hover:text-gray-900 font-medium scroll-to-footer">About</a>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <input type="text" placeholder="What are you looking for?" class="border rounded-full py-1 px-4 pl-10 text-sm focus:outline-none">
+                    <svg class="w-4 h-4 text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </div>
+                <a href="../Wishlist/index.html" class="relative inline-block">
+                                                    <i class="far fa-heart"></i>
+                                                    <span class="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold border-2 border-white">4</span>
+                                                </a>
+                                                <a href="../Cart/index.html" class="relative inline-block">
+                                                    <i class="fas fa-shopping-cart"></i>
+                                                    <span class="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold border-2 border-white">2</span>
+                                                </a>
+                                                <div class="relative">
+                                                    <button id="profile-btn" class="text-gray-700 hover:text-gray-900 focus:outline-none">
+                                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                                                    </button>
+                                                    <button id="chatbotButton" class="text-gray-700 hover:text-gray-900 focus:outline-none ml-2" title="Chatbot">
+                                                        <i class="fas fa-robot"></i>
+                                                    </button>
+                                                    <!-- Chatbox Component -->
+                                                    <div id="chatboxContainer" class="fixed bottom-8 right-8 z-50 w-96 max-w-full bg-transparent" style="display: none;">
+                                                        <div class="rounded-t-lg rounded-b-lg shadow-lg border border-gray-300 bg-white" style="overflow: visible;">
+                                                            <div class="bg-black text-white rounded-t-lg flex items-center justify-between px-4 py-2 relative">
+                                                                <span class="font-bold">MigsBot</span>
+                                                                <div class="flex items-center space-x-2">
+                                                                    <button title="Alert" class="text-orange-400 hover:text-orange-600 focus:outline-none"><i class="fas fa-exclamation-triangle"></i></button>
+                                                                    <button id="closeChatbox" title="Close" class="text-blue-300 hover:text-blue-500 focus:outline-none"><i class="fas fa-trash"></i></button>
+                                                                </div>
+                                                                <div class="absolute -top-4 right-8 w-0 h-0 border-l-8 border-r-8 border-b-8 border-l-transparent border-r-transparent border-b-black"></div>
+                                                            </div>
+                                                            <div class="p-4 bg-gray-50 min-h-[250px] flex flex-col gap-3" style="height: 320px;">
+                                                                <div class="flex flex-col gap-2">
+                                                                    <div class="self-end bg-white border border-gray-300 rounded-lg px-3 py-2 shadow-sm max-w-xs relative">
+                                                                        <span>Rephrase 'This is an ai chatbot generated for better communication and simpler work flows'</span>
+                                                                        <span class="absolute right-2 top-2 text-gray-400"><i class="far fa-copy"></i></span>
+                                                                    </div>
+                                                                    <div class="self-start bg-white border border-gray-300 rounded-lg px-3 py-2 shadow-sm max-w-xs relative">
+                                                                        <span>This AI chatbot has been developed to optimize communication and simplify work processes, ultimately leading to smoother operations.</span>
+                                                                        <span class="absolute right-2 top-2 text-gray-400"><i class="far fa-copy"></i></span>
+                                                                    </div>
+                                                                    <div class="self-end bg-white border border-gray-300 rounded-lg px-3 py-2 shadow-sm max-w-xs relative">
+                                                                        <span>Thank You!</span>
+                                                                        <span class="absolute right-2 top-2 text-gray-400"><i class="far fa-copy"></i></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="px-4 py-2 bg-white rounded-b-lg border-t border-gray-200 flex items-center gap-2">
+                                                                <input type="text" placeholder="Type a new message here" class="flex-1 border border-gray-300 rounded-full px-4 py-2 text-sm focus:outline-none" />
+                                                                <button class="text-gray-500 hover:text-gray-700 focus:outline-none"><i class="far fa-image"></i></button>
+                                                                <button class="text-gray-500 hover:text-gray-700 focus:outline-none"><i class="far fa-smile"></i></button>
+                                                                <button class="bg-black text-white rounded-full px-4 py-2 ml-2 hover:bg-gray-800 focus:outline-none"><i class="fas fa-paper-plane"></i></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div id="profileMenu" class="absolute right-0 mt-3 w-64 bg-gray-800 text-white rounded-md shadow-lg py-2 hidden z-50">
+                            <a href="../Account/index.html" class="flex items-center px-4 py-2 hover:bg-gray-700">
+                                <i class="far fa-user mr-3"></i>
+                                <span>Manage My Account</span>
+                            </a>
+                            <a href="../Cart/index.html" class="flex items-center px-4 py-2 hover:bg-gray-700">
+                                <i class="fas fa-receipt mr-3"></i>
+                                <span>My Order</span>
+                            </a>
+                                                        <a href="#" class="flex items-center px-4 py-2 hover:bg-gray-700">
+                                                                <i class="fas fa-undo mr-3"></i>
+                                                                <span>My Cancellations</span>
+                                                        </a>
+                                                        <a href="#" class="flex items-center px-4 py-2 hover:bg-gray-700">
+                                                                <i class="fas fa-undo mr-3"></i>
+                                                                <span>My Reviews</span>
+                                                        </a>
+                                                        <div class="border-t border-gray-700 my-2"></div>
+                                                        <a href="#" class="flex items-center px-4 py-2 hover:bg-gray-700">
+                            <a href="../Homepagewithaccount/index.html" class="flex items-center px-4 py-2 hover:bg-gray-700">
+                                <i class="fas fa-sign-out-alt mr-3"></i>
+                                <span>Logout</span>
+                            </a>
+                                                    </div>
+                                                </div>
+            </div>
+        </div>
+    </nav>
+
+<script>
+// Chatbox toggle logic
+document.addEventListener('DOMContentLoaded', function() {
+    const chatbotBtn = document.getElementById('chatbotButton');
+    const chatbox = document.getElementById('chatboxContainer');
+    const closeBtn = document.getElementById('closeChatbox');
+    if (chatbotBtn && chatbox) {
+        chatbotBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (chatbox.style.display === 'none' || chatbox.style.display === '') {
+                chatbox.style.display = 'block';
+            } else {
+                chatbox.style.display = 'none';
+            }
+        });
+    }
+    if (closeBtn && chatbox) {
+        closeBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            chatbox.style.display = 'none';
+        });
+    }
+    // Optional: Hide chatbox when clicking outside
+    document.addEventListener('click', function(e) {
+        if (chatbox && chatbox.style.display === 'block' && !chatbox.contains(e.target) && e.target !== chatbotBtn) {
+            chatbox.style.display = 'none';
+        }
+    });
+});
+</script>
+    
+    <main class="container mx-auto py-8 px-4">
+        <div class="text-sm breadcrumbs mb-4">
+            <ul>
+                <li><a href="../Homepagewithaccount/index.html">Home</a></li>
+                <li>My Account</li>
+            </ul>
+        </div>
+
+        <div class="flex flex-col lg:flex-row gap-8">
+            <div class="w-full lg:w-1/4">
+                <h2 class="text-xl font-bold mb-4">Manage My Account</h2>
+                <ul>
+                    <li class="mb-2"><a href="#" class="text-red-500 hover:underline">My Profile</a></li>
+                    <li class="mb-2"><a href="#" class="text-gray-700 hover:underline">Address Book</a></li>
+                    <li class="mb-2"><a href="#" class="text-gray-700 hover:underline">My Payment Options</a></li>
+                </ul>
+                <h2 class="text-xl font-bold mt-6 mb-4">My Orders</h2>
+                <ul>
+                    <li class="mb-2"><a href="#" class="text-gray-700 hover:underline">My Returns</a></li>
+                    <li class="mb-2"><a href="#" class="text-gray-700 hover:underline">My Cancellations</a></li>
+                </ul>
+                <h2 class="text-xl font-bold mt-6 mb-4">My Wishlist</h2>
+            </div>
+
+            <div class="w-full lg:w-3/4 bg-white p-6 rounded-md shadow-md">
+                <h2 class="text-xl font-bold text-red-500 mb-6">Edit Your Profile</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                    <div>
+                        <label for="first-name" class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                        <input type="text" id="first-name" placeholder="Md" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-red-500 focus:border-red-500">
+                    </div>
+                    <div>
+                        <label for="last-name" class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                        <input type="text" id="last-name" placeholder="Rimel" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-red-500 focus:border-red-500">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                        <input type="email" id="email" placeholder="rimelll@gmail.com" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-red-500 focus:border-red-500">
+                    </div>
+                    <div>
+                        <label for="address" class="block text-sm font-medium text-gray-700 mb-2">Address</label>
+                        <input type="text" id="address" placeholder="Kingston, 5236, United State" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-red-500 focus:border-red-500">
+                    </div>
+                </div>
+
+                <h3 class="text-lg font-bold mb-4">Password Changes</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                    <div>
+                        <label for="current-password" class="block text-sm font-medium text-gray-700 mb-2">Current Password</label>
+                        <input type="password" id="current-password" placeholder="Current Password" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-red-500 focus:border-red-500">
+                    </div>
+                    <div></div> <!-- Empty div for layout alignment -->
+                    <div>
+                        <label for="new-password" class="block text-sm font-medium text-gray-700 mb-2">New Password</label>
+                        <input type="password" id="new-password" placeholder="New Password" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-red-500 focus:border-red-500">
+                    </div>
+                    <div>
+                        <label for="confirm-new-password" class="block text-sm font-medium text-gray-700 mb-2">Confirm New Password</label>
+                        <input type="password" id="confirm-new-password" placeholder="Confirm New Password" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-red-500 focus:border-red-500">
+                    </div>
+                </div>
+
+                <div class="flex justify-end space-x-4">
+                    <button class="bg-white text-gray-700 border border-gray-300 px-6 py-2 rounded-md hover:bg-gray-100">Cancel</button>
+                    <button class="bg-red-500 text-white px-6 py-2 rounded-md hover:bg-red-600">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </main>
+        <!-- Main Footer -->
+    <footer id="main-footer" class="bg-black text-white py-12 mt-8">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 px-4">
+            <div>
+                <h3 class="text-xl font-bold mb-4">3Migs Gowns & Barong</h3>
+                <p class="text-sm">Subscribe</p>
+                <p class="text-xs mb-4">Get 10% off your first order</p>
+                <div class="flex">
+                    <input type="email" placeholder="Enter your email" class="bg-gray-800 text-white text-sm px-4 py-2 rounded-l-md focus:outline-none">
+                    <button class="bg-red-500 px-4 py-2 rounded-r-md hover:bg-red-600">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold mb-4">Support</h3>
+                <p class="text-sm">Pandi, Bulacan</p>
+                <p class="text-sm">3migs@gmail.com</p>
+                <p class="text-sm">+639*********</p>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold mb-4">Account</h3>
+                <ul>
+                    <li class="mb-2"><a href="#" class="text-sm hover:underline">My Account</a></li>
+                    <li class="mb-2"><a href="#" class="text-sm hover:underline">Login / Register</a></li>
+                    <li class="mb-2"><a href="#" class="text-sm hover:underline">Cart</a></li>
+                    <li class="mb-2"><a href="#" class="text-sm hover:underline">Wishlist</a></li>
+                    <li class="mb-2"><a href="#" class="text-sm hover:underline">Shop</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold mb-4">Quick Link</h3>
+                <ul>
+                    <li class="mb-2"><a href="#" class="text-sm hover:underline">Privacy Policy</a></li>
+                    <li class="mb-2"><a href="#" class="text-sm hover:underline">Terms Of Use</a></li>
+                    <li class="mb-2"><a href="#" class="text-sm hover:underline">FAQ</a></li>
+                    <li class="mb-2"><a href="#" class="text-sm hover:underline">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center text-xs mt-8">
+            <p>Copyright Group 6 2025. All right reserved</p>
+        </div>
+    </footer>
+</body>
+<script>
+    // Smooth scroll for Contact/About links
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('a.scroll-to-footer').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                const target = document.getElementById('main-footer');
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    });
+</script>
+</html>

@@ -1,61 +1,176 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Three Migs - E-commerce Platform
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A full-stack e-commerce platform built with Laravel 12 and modern frontend technologies.
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **User Authentication**: Secure login/registration with Laravel Breeze
+- **Role-based Access Control**: Admin and customer roles with Spatie Laravel Permission
+- **Product Management**: Complete product catalog with variants and inventory
+- **Shopping Cart**: Persistent cart functionality
+- **Order Management**: Order processing and tracking
+- **API Integration**: RESTful API with Laravel Sanctum authentication
+- **Modern Frontend**: Responsive design with Tailwind CSS
+- **Admin Dashboard**: Comprehensive admin panel for store management
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Tech Stack
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Backend
+- **Laravel 12.0** - PHP Framework
+- **PHP 8.2+** - Server-side language
+- **SQLite** - Database (configurable)
+- **Laravel Sanctum** - API Authentication
+- **Spatie Laravel Permission** - Role & Permission Management
+- **Laravel Breeze** - Authentication scaffolding
 
-## Learning Laravel
+### Frontend
+- **Tailwind CSS** - Utility-first CSS framework
+- **Alpine.js** - Lightweight JavaScript framework
+- **Vite** - Build tool and development server
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Installation
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Prerequisites
+- PHP 8.2 or higher
+- Composer
+- Node.js 18+ and npm
+- SQLite (or MySQL/PostgreSQL)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Setup Instructions
 
-## Laravel Sponsors
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd three-migs
+   ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+2. **Install PHP dependencies**
+   ```bash
+   composer install
+   ```
 
-### Premium Partners
+3. **Install Node.js dependencies**
+   ```bash
+   npm install
+   ```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+4. **Environment setup**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
+
+5. **Database setup**
+   ```bash
+   php artisan migrate
+   php artisan db:seed --class=RolesAndAdminSeeder
+   ```
+
+6. **Build frontend assets**
+   ```bash
+   npm run build
+   ```
+
+## Running the Application
+
+### Development Mode
+```bash
+# Terminal 1 - Laravel server
+php artisan serve
+
+# Terminal 2 - Vite dev server (for development)
+npm run dev
+```
+
+### Production Mode
+```bash
+php artisan serve --host=0.0.0.0 --port=8000
+```
+
+## Access Points
+
+### Frontend Pages
+- **Homepage**: http://127.0.0.1:8000/Homepage
+- **Login**: http://127.0.0.1:8000/Login
+- **Signup**: http://127.0.0.1:8000/Signup
+- **Cart**: http://127.0.0.1:8000/Cart
+- **Checkout**: http://127.0.0.1:8000/CheckOut
+- **Product Details**: http://127.0.0.1:8000/ProductDetails
+- **Account**: http://127.0.0.1:8000/Account
+
+### Admin Panel
+- **Admin Login**: http://127.0.0.1:8000/login
+- **Admin Dashboard**: http://127.0.0.1:8000/admin/dashboard
+
+### API Endpoints
+- **Health Check**: http://127.0.0.1:8000/api/health
+- **Products**: http://127.0.0.1:8000/api/v1/products
+- **Authentication**: http://127.0.0.1:8000/api/v1/login
+
+## Default Admin Credentials
+
+- **Email**: `admin@example.com`
+- **Password**: `password`
+
+## API Documentation
+
+### Authentication Endpoints
+- `POST /api/v1/register` - User registration
+- `POST /api/v1/login` - User login
+- `POST /api/v1/logout` - User logout (requires authentication)
+
+### Product Endpoints
+- `GET /api/v1/products` - Get all products
+- `GET /api/v1/products/{id}` - Get specific product
+- `GET /api/v1/products/category/{category}` - Get products by category
+- `GET /api/v1/categories` - Get all categories
+
+### Cart Endpoints (Authenticated)
+- `GET /api/v1/cart` - Get user's cart
+- `POST /api/v1/cart/add` - Add item to cart
+- `PUT /api/v1/cart/update/{id}` - Update cart item
+- `DELETE /api/v1/cart/remove/{id}` - Remove cart item
+- `DELETE /api/v1/cart/clear` - Clear cart
+
+### Order Endpoints (Authenticated)
+- `GET /api/v1/orders` - Get user's orders
+- `POST /api/v1/orders` - Create new order
+- `GET /api/v1/orders/{id}` - Get specific order
+
+## Project Structure
+
+```
+three-migs/
+├── app/
+│   ├── Http/
+│   │   ├── Controllers/
+│   │   │   ├── Api/          # API controllers
+│   │   │   └── ...           # Web controllers
+│   │   └── Middleware/       # Custom middleware
+│   ├── Models/               # Eloquent models
+│   └── ...
+├── database/
+│   ├── migrations/           # Database migrations
+│   └── seeders/             # Database seeders
+├── public/                   # Public assets and frontend
+│   ├── Homepage/            # Homepage files
+│   ├── Login/               # Login page
+│   ├── Cart/                # Shopping cart
+│   └── ...                  # Other frontend pages
+├── routes/
+│   ├── web.php              # Web routes
+│   └── api.php              # API routes
+└── ...
+```
 
 ## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
